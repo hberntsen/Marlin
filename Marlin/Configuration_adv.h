@@ -217,7 +217,7 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-#define E0_AUTO_FAN_PIN -1
+#define E0_AUTO_FAN_PIN 5
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
@@ -225,11 +225,11 @@
 #define EXTRUDER_AUTO_FAN_SPEED   255  // == full speed
 
 // Define a pin to turn case light on/off
-//#define CASE_LIGHT_PIN 4
+#define CASE_LIGHT_PIN 4             // Frits Sijbel
 #if PIN_EXISTS(CASE_LIGHT)
   #define INVERT_CASE_LIGHT false   // Set to true if HIGH is the OFF state (active low)
   //#define CASE_LIGHT_DEFAULT_ON   // Uncomment to set default state to on
-  //#define MENU_ITEM_CASE_LIGHT    // Uncomment to have a Case Light On / Off entry in main menu
+  #define MENU_ITEM_CASE_LIGHT    // Uncomment to have a Case Light On / Off entry in main menu
 #endif
 
 //===========================================================================
@@ -557,10 +557,10 @@
 // Babystepping enables the user to control the axis in tiny amounts, independently from the normal printing process
 // it can e.g. be used to change z-positions in the print startup phase in real-time
 // does not respect endstops!
-//#define BABYSTEPPING
+#define BABYSTEPPING
 #if ENABLED(BABYSTEPPING)
-  #define BABYSTEP_XY  //not only z, but also XY in the menu. more clutter, more functions
-                       //not implemented for deltabots!
+  //#define BABYSTEP_XY  //not only z, but also XY in the menu. more clutter, more functions
+                         //not implemented for deltabots!
   #define BABYSTEP_INVERT_Z false  //true for inverse movements in Z
   #define BABYSTEP_MULTIPLICATOR 1 //faster movements
 #endif
@@ -625,10 +625,10 @@
 // Below are the macros that are used to define the borders for the mesh area,
 // made available here for specialized needs, ie dual extruder setup.
 #if ENABLED(MESH_BED_LEVELING)
-  #define MESH_MIN_X (X_MIN_POS + MESH_INSET)
-  #define MESH_MAX_X (X_MAX_POS - (MESH_INSET))
-  #define MESH_MIN_Y (Y_MIN_POS + MESH_INSET)
-  #define MESH_MAX_Y (Y_MAX_POS - (MESH_INSET))
+  #define MESH_MIN_X 10
+  #define MESH_MAX_X 190
+  #define MESH_MIN_Y 15
+  #define MESH_MAX_Y 180
 #endif
 
 #if ENABLED(AUTO_BED_LEVELING_UBL)
@@ -1061,7 +1061,7 @@
 /**
  * Double-click the Encoder button on the Status Screen for Z Babystepping.
  */
-//#define DOUBLECLICK_FOR_Z_BABYSTEPPING
+#define DOUBLECLICK_FOR_Z_BABYSTEPPING
 #define DOUBLECLICK_MAX_INTERVAL 1250   // Maximum interval between clicks, in milliseconds.
                                         // Note: You may need to add extra time to mitigate controller latency.
 
