@@ -32,7 +32,7 @@
 
 #define DISPLAY_CHARSET_ISO10646_1
 
-#define WELCOME_MSG                         MACHINE_NAME _UxGT(" gereed.")
+#define WELCOME_MSG                         MACHINE_NAME _UxGT(" gereed")
 #define MSG_SD_INSERTED                     _UxGT("Kaart ingestoken")
 #define MSG_SD_REMOVED                      _UxGT("Kaart verwijderd")
 #define MSG_LCD_ENDSTOPS                    _UxGT("Endstops") // Max length 8 characters
@@ -51,14 +51,16 @@
 #define MSG_SET_HOME_OFFSETS                _UxGT("Zet home offsets")
 #define MSG_HOME_OFFSETS_APPLIED            _UxGT("H offset toegep.")
 #define MSG_SET_ORIGIN                      _UxGT("Nulpunt instellen")
-#define MSG_PREHEAT_1                       _UxGT("PLA voorverwarmen")
-#define MSG_PREHEAT_1_N                     _UxGT("PLA voorverw. ")
-#define MSG_PREHEAT_1_ALL                   MSG_PREHEAT_1_N _UxGT("aan")
+#define MSG_PREHEAT_1                       _UxGT("PLA verwarmen") // Frits Sijbel
+#define MSG_PREHEAT_1_N                     _UxGT("Verwarmen ")
+#define MSG_PREHEAT_1_ALL                   MSG_PREHEAT_1_N _UxGT("alles")
+#define MSG_PREHEAT_1_END                   MSG_PREHEAT_1_N _UxGT("Hotend")
 #define MSG_PREHEAT_1_BEDONLY               MSG_PREHEAT_1_N _UxGT("Bed")
 #define MSG_PREHEAT_1_SETTINGS              _UxGT("PLA verw. conf")
-#define MSG_PREHEAT_2                       _UxGT("ABS voorverwarmen")
-#define MSG_PREHEAT_2_N                     _UxGT("ABS voorverw. ")
-#define MSG_PREHEAT_2_ALL                   MSG_PREHEAT_2_N _UxGT("aan")
+#define MSG_PREHEAT_2                       _UxGT("ABS verwarmen") // Frits Sijbel
+#define MSG_PREHEAT_2_N                     _UxGT("Verwarmen ")
+#define MSG_PREHEAT_2_ALL                   MSG_PREHEAT_2_N _UxGT("alles")
+#define MSG_PREHEAT_2_END                   MSG_PREHEAT_1_N _UxGT("Hotend")
 #define MSG_PREHEAT_2_BEDONLY               MSG_PREHEAT_2_N _UxGT("Bed")
 #define MSG_PREHEAT_2_SETTINGS              _UxGT("ABS verw. conf")
 #define MSG_COOLDOWN                        _UxGT("Afkoelen")
@@ -158,7 +160,7 @@
 #define MSG_BABYSTEP_Y                      _UxGT("Babystap Y")
 #define MSG_BABYSTEP_Z                      _UxGT("Babystap Z")
 #define MSG_ENDSTOP_ABORT                   _UxGT("Endstop afbr.")
-#define MSG_HEATING_FAILED_LCD              _UxGT("Voorverw. fout")
+#define MSG_HEATING_FAILED_LCD              _UxGT("Verwarm fout")
 #define MSG_ERR_REDUNDANT_TEMP              _UxGT("Redun. temp fout")
 #define MSG_THERMAL_RUNAWAY                 _UxGT("Therm. wegloop")
 #define MSG_ERR_MAXTEMP                     _UxGT("Err: Max. temp")
@@ -171,10 +173,10 @@
 #define MSG_SHORT_DAY                       _UxGT("d") //  One character only. Keep English standard
 #define MSG_SHORT_HOUR                      _UxGT("h") //  One character only
 #define MSG_SHORT_MINUTE                    _UxGT("m") //  One character only
-#define MSG_HEATING                         _UxGT("Voorwarmen...")
-#define MSG_HEATING_COMPLETE                _UxGT("Voorverw. kompl.")
-#define MSG_BED_HEATING                     _UxGT("Bed voorverw.")
-#define MSG_BED_DONE                        _UxGT("Bed is voorverw.")
+#define MSG_HEATING                         _UxGT("Warmen...")
+#define MSG_HEATING_COMPLETE                _UxGT("Verwarmd")
+#define MSG_BED_HEATING                     _UxGT("Bed warmen")
+#define MSG_BED_DONE                        _UxGT("Bed is warm")
 #define MSG_DELTA_CALIBRATE                 _UxGT("Delta Calibratie")
 #define MSG_DELTA_CALIBRATE_X               _UxGT("Kalibreer X")
 #define MSG_DELTA_CALIBRATE_Y               _UxGT("Kalibreer Y")

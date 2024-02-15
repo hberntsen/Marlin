@@ -18,6 +18,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
+ *Aanpassingen in configuration.h Frits Sijbel
+  CUSTOM_MACHINE_NAME 139
+  X_MIN_ENDSTOP_INVERTING 462
+  Y_MIN_ENDSTOP_INVERTING 463
+  Z_MIN_ENDSTOP_INVERTING 464
+  Z_MIN_PROBE_ENDSTOP_INVERTING 468
+  DEFAULT_AXIS_STEPS_PER_UNIT 495 (400 spindels met dubbele schroefdraad, 1600 spindels met enkele schroefdraad)
+  Y_Max_Pos 730
+  LCD_LANGUAGE nl 1071
+  REPRAP_DISCOUNT_SMART_CONTROLLER 1260
+  REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER 1274
+
+
  */
 
 /**
@@ -26,6 +39,9 @@
  * This firmware is a mashup between Sprinter and grbl.
  *  - https://github.com/kliment/Sprinter
  *  - https://github.com/simen/grbl/tree
+ *  
+ *  Caselight aansluiting: 12V relais schakelt met de 5V stuurstroom van D4 b.v 12V ledverlichting of 220V lampjes 
+ *  Ventilator aansluiting: D5 met 1K weerstand aan BD139 transistor,middenpootje transistor aan 12V en 3e pootje aan ground 
  */
 
 #include "MarlinConfig.h"

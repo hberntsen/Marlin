@@ -363,3 +363,7 @@
   #endif // NEWPANEL
 
 #endif // ULTRA_LCD
+
+#undef SD_DETECT_PIN // Bart Venneker
+#define SD_DETECT_PIN -1 // BART VENNEKER, to disable the sd detect pin
+

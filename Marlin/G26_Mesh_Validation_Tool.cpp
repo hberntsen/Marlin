@@ -30,8 +30,8 @@
 #define FILAMENT 1.75               // the options every time they do a Mesh Validation Print.
 #define LAYER_HEIGHT 0.2
 #define PRIME_LENGTH 10.0           // So, we put these number in an easy to find and change place.
-#define BED_TEMP 60.0
-#define HOTEND_TEMP 205.0
+#define BED_TEMP 50.0
+#define HOTEND_TEMP 195.0
 #define OOZE_AMOUNT 0.3
 
 #include "Marlin.h"
