@@ -459,13 +459,13 @@
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
-#define X_MIN_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.  // Bart Venneker
-#define Y_MIN_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.  // Bart Venneker
-#define Z_MIN_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.  // Bart Venneker
+#define X_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.  // Bart Venneker
+#define Y_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.  // Bart Venneker
+#define Z_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.  // Bart Venneker
 #define X_MAX_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.  // Bart Venneker
 #define Y_MAX_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.  // Bart Venneker
 #define Z_MAX_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.  // Bart Venneker
-#define Z_MIN_PROBE_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.  // Bart Venneker
+#define Z_MIN_PROBE_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.  // Bart Venneker
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
