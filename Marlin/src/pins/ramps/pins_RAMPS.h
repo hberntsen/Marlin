@@ -970,6 +970,3 @@
   #define CLCD_SPI_CS                EXP2_03_PIN
 
 #endif // TOUCH_UI_FTDI_EVE && LCD_FYSETC_TFT81050
-
-#undef SD_DETECT_PIN // Bart Venneker
-#define SD_DETECT_PIN -1 // BART VENNEKER, to disable the sd detect pin
