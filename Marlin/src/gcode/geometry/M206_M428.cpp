@@ -85,6 +85,7 @@ void GcodeSuite::M428() {
   xyz_float_t diff;
   LOOP_NUM_AXES(i) {
     diff[i] = base_home_pos((AxisEnum)i) - current_position[i];
+#ifndef DISABLE_M428_LIMITS
     if (!WITHIN(diff[i], -20, 20) && home_dir((AxisEnum)i) > 0)
       diff[i] = -current_position[i];
     if (!WITHIN(diff[i], -20, 20)) {
@@ -93,6 +94,7 @@ void GcodeSuite::M428() {
       ERR_BUZZ();
       return;
     }
+#endif
   }
 
   LOOP_NUM_AXES(i) set_home_offset((AxisEnum)i, diff[i]);
