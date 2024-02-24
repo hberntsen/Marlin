@@ -39,45 +39,60 @@ namespace Language_nl {
 
   LSTR WELCOME_MSG                        = MACHINE_NAME _UxGT(" gereed");
   LSTR MSG_BACK                           = _UxGT("Terug");
+  LSTR MSG_BUTTON_INIT                    = _UxGT("Reset");
+  LSTR MSG_BUTTON_CANCEL                  = _UxGT("Annuleren");
+  LSTR MSG_BUTTON_PROCEED                 = _UxGT("Doorgaan");
+  LSTR MSG_BUTTON_DONE                    = _UxGT("Klaar");
   LSTR MSG_MEDIA_INSERTED                 = _UxGT("Kaart ingestoken");
   LSTR MSG_MEDIA_REMOVED                  = _UxGT("Kaart verwijderd");
-  LSTR MSG_LCD_ENDSTOPS                   = _UxGT("Endstops"); // Max length 8 characters
+  LSTR MSG_LCD_ENDSTOPS                   = _UxGT("Eindstop"); // Max length 8 characters
+  LSTR MSG_LCD_SOFT_ENDSTOPS              = _UxGT("Soft eindstops");
+  LSTR MSG_LCD_VIEW_ENDSTOPS              = _UxGT("Eindstop status");
   LSTR MSG_MAIN_MENU                      = _UxGT("Hoofdmenu");
+  LSTR MSG_ADVANCED_SETTINGS              = _UxGT("Geavanceerd");
+  LSTR MSG_CONFIGURATION                  = _UxGT("Configuratie");
   LSTR MSG_RUN_AUTO_FILES                 = _UxGT("Autostart");
   LSTR MSG_DISABLE_STEPPERS               = _UxGT("Motoren uit");
   LSTR MSG_DEBUG_MENU                     = _UxGT("Debug Menu"); // accepted English terms
   LSTR MSG_PROGRESS_BAR_TEST              = _UxGT("Vooruitgang Test");
-
+  LSTR MSG_HOMING                         = _UxGT("Gaat naar thuispos.");
+  LSTR MSG_AUTO_HOME                      = _UxGT("Naar thuispositie");
+  LSTR MSG_LEVEL_BED_HOMING               = _UxGT("Gaat naar thuispos.");
   LSTR MSG_LEVEL_BED_WAITING              = _UxGT("Klik voor begin");
   LSTR MSG_LEVEL_BED_NEXT_POINT           = _UxGT("Volgende Plaats");
-  LSTR MSG_LEVEL_BED_DONE                 = _UxGT("Bed level kompl.");
-  LSTR MSG_SET_HOME_OFFSETS               = _UxGT("Zet home offsets");
-  LSTR MSG_HOME_OFFSETS_APPLIED           = _UxGT("H offset toegep.");
+  LSTR MSG_LEVEL_BED_DONE                 = _UxGT("Bedniv. klaar");
+  LSTR MSG_Z_FADE_HEIGHT                  = _UxGT("Vervagingshoogte");
+  LSTR MSG_SET_HOME_OFFSETS               = _UxGT("Zet X0 Y0 Z0");
+  LSTR MSG_HOME_OFFSETS_APPLIED           = _UxGT("X0 Y0 Z0 ingesteld");
   #if HAS_PREHEAT
-    LSTR MSG_PREHEAT_1                    = PREHEAT_1_LABEL _UxGT(" verwarmen");
+    LSTR MSG_PREHEAT_1                    = _UxGT("Verwarm Hotend + Bed");
     LSTR MSG_PREHEAT_1_H                  = PREHEAT_1_LABEL _UxGT(" verw. ~");
-    LSTR MSG_PREHEAT_1_END                = PREHEAT_1_LABEL _UxGT(" verw. Hotend");
+    LSTR MSG_PREHEAT_1_END                = _UxGT("Verwarm Hotend");
     LSTR MSG_PREHEAT_1_END_E              = PREHEAT_1_LABEL _UxGT(" verw. Hotend ~");
     LSTR MSG_PREHEAT_1_ALL                = PREHEAT_1_LABEL _UxGT(" verw. alles");
-    LSTR MSG_PREHEAT_1_BEDONLY            = PREHEAT_1_LABEL _UxGT(" verw. Bed");
-    LSTR MSG_PREHEAT_1_SETTINGS           = PREHEAT_1_LABEL _UxGT(" verw. conf");
+    LSTR MSG_PREHEAT_1_BEDONLY            =  _UxGT("Verwarm Bed");
+    LSTR MSG_PREHEAT_1_SETTINGS           = PREHEAT_1_LABEL _UxGT(" instellingen");
 
     LSTR MSG_PREHEAT_M                    = _UxGT("$ verwarmen");
     LSTR MSG_PREHEAT_M_H                  = _UxGT("$ verw. ~");
-    LSTR MSG_PREHEAT_M_END                = _UxGT("$ verw. Hotend");
-    LSTR MSG_PREHEAT_M_END_E              = _UxGT("$ verw. Hotend ~");
+    LSTR MSG_PREHEAT_M_END                = _UxGT("$ verw. hotend");
+    LSTR MSG_PREHEAT_M_END_E              = _UxGT("$ verw. hotend ~");
     LSTR MSG_PREHEAT_M_ALL                = _UxGT("$ verw. alles");
-    LSTR MSG_PREHEAT_M_BEDONLY            = _UxGT("$ verw. Bed");
-    LSTR MSG_PREHEAT_M_SETTINGS           = _UxGT("$ verw. conf");
+    LSTR MSG_PREHEAT_M_BEDONLY            = _UxGT("$ verw. bed");
+    LSTR MSG_PREHEAT_M_SETTINGS           = _UxGT("$ verw. conf.");
   #endif
+  LSTR MSG_PREHEAT_CUSTOM                 = _UxGT("Preheat aangepast");
   LSTR MSG_COOLDOWN                       = _UxGT("Afkoelen");
   LSTR MSG_SWITCH_PS_ON                   = _UxGT("Stroom aan");
   LSTR MSG_SWITCH_PS_OFF                  = _UxGT("Stroom uit");
   LSTR MSG_EXTRUDE                        = _UxGT("Extrude");
   LSTR MSG_RETRACT                        = _UxGT("Retract");
   LSTR MSG_MOVE_AXIS                      = _UxGT("As verplaatsen");
-  LSTR MSG_BED_LEVELING                   = _UxGT("Bed Leveling");
-  LSTR MSG_LEVEL_BED                      = _UxGT("Level bed");
+  LSTR MSG_BED_LEVELING                   = _UxGT("Bednivellering");
+  LSTR MSG_LEVEL_BED                      = _UxGT("Start bednivellering");
+  LSTR MSG_EDIT_MESH                      = _UxGT("Bewerk mesh");
+  LSTR MSG_MESH_VIEW                      = _UxGT("Bekijk mesh");
+  LSTR MSG_PROBING_POINT                  = _UxGT("Meten positie");
 
   LSTR MSG_MOVING                         = _UxGT("Verplaatsen...");
   LSTR MSG_FREE_XY                        = _UxGT("Vrij XY");
@@ -85,15 +100,16 @@ namespace Language_nl {
   LSTR MSG_MOVE_Y                         = _UxGT("Verplaats Y");
   LSTR MSG_MOVE_Z                         = _UxGT("Verplaats Z");
   LSTR MSG_MOVE_N                         = _UxGT("Verplaats @");
-  LSTR MSG_MOVE_E                         = _UxGT("Extruder");
+  LSTR MSG_MOVE_E                         = _UxGT("Verplaats filament");
   LSTR MSG_MOVE_EN                        = _UxGT("Extruder *");
+  LSTR MSG_HOTEND_TOO_COLD                = _UxGT("Hotend te koud");
   LSTR MSG_MOVE_N_MM                      = _UxGT("Verplaats $mm");
   LSTR MSG_MOVE_01MM                      = _UxGT("Verplaats 0.1mm");
   LSTR MSG_MOVE_1MM                       = _UxGT("Verplaats 1mm");
   LSTR MSG_MOVE_10MM                      = _UxGT("Verplaats 10mm");
   LSTR MSG_MOVE_100MM                     = _UxGT("Verplaats 100mm");
   LSTR MSG_SPEED                          = _UxGT("Snelheid");
-  LSTR MSG_BED_Z                          = _UxGT("Bed Z");
+  LSTR MSG_BED_Z                          = _UxGT("Bed Z versch.");
   LSTR MSG_NOZZLE                         = _UxGT("Nozzle");
   LSTR MSG_NOZZLE_N                       = _UxGT("Nozzle ~");
   LSTR MSG_BED                            = _UxGT("Bed");
@@ -110,6 +126,8 @@ namespace Language_nl {
   LSTR MSG_LCD_OFF                        = _UxGT("Uit");
   LSTR MSG_SELECT_E                       = _UxGT("Selecteer *");
   LSTR MSG_ACC                            = _UxGT("Versn");
+  LSTR MSG_MAX_SPEED                      = _UxGT("Max snelheid (mm/s)");
+  LSTR MSG_ACCELERATION                   = _UxGT("Acceleratie");
   LSTR MSG_TEMPERATURE                    = _UxGT("Temperatuur");
   LSTR MSG_MOTION                         = _UxGT("Beweging");
   LSTR MSG_FILAMENT                       = _UxGT("Filament");
@@ -119,17 +137,19 @@ namespace Language_nl {
   LSTR MSG_FILAMENT_DIAM                  = _UxGT("Fil. Dia.");
   LSTR MSG_FILAMENT_DIAM_E                = _UxGT("Fil. Dia. *");
   LSTR MSG_CONTRAST                       = _UxGT("LCD contrast");
-  LSTR MSG_STORE_EEPROM                   = _UxGT("Geheugen opslaan");
-  LSTR MSG_LOAD_EEPROM                    = _UxGT("Geheugen laden");
-  LSTR MSG_RESTORE_DEFAULTS               = _UxGT("Noodstop reset");
+  LSTR MSG_STORE_EEPROM                   = _UxGT("Instellingen opsl.");
+  LSTR MSG_LOAD_EEPROM                    = _UxGT("Instellingen laden");
+  LSTR MSG_RESTORE_DEFAULTS               = _UxGT("Instellingen reset");
+  LSTR MSG_INIT_EEPROM                    = _UxGT("Wis inst. geheugen");
+  LSTR MSG_SETTINGS_STORED                = _UxGT("Inst. opgeslagen");
   LSTR MSG_REFRESH                        = LCD_STR_REFRESH  _UxGT("Ververs");
-  LSTR MSG_INFO_SCREEN                    = _UxGT("Info scherm");
+  LSTR MSG_INFO_SCREEN                    = _UxGT("Infoscherm");
   LSTR MSG_PREPARE                        = _UxGT("Voorbereiden");
   LSTR MSG_TUNE                           = _UxGT("Afstellen");
   LSTR MSG_PAUSE_PRINT                    = _UxGT("Print pauzeren");
   LSTR MSG_RESUME_PRINT                   = _UxGT("Print hervatten");
   LSTR MSG_STOP_PRINT                     = _UxGT("Print stoppen");
-  LSTR MSG_MEDIA_MENU                     = _UxGT("Print van SD");
+  LSTR MSG_MEDIA_MENU                     = _UxGT("Print van SD kaart");
   LSTR MSG_NO_MEDIA                       = _UxGT("Geen SD kaart");
   LSTR MSG_DWELL                          = _UxGT("Slapen...");
   LSTR MSG_USERWAIT                       = _UxGT("Wachten...");
@@ -145,20 +165,23 @@ namespace Language_nl {
   LSTR MSG_CONTROL_RETRACT_RECOVER_SWAP   = _UxGT("Ruil Unretr. mm");
   LSTR MSG_CONTROL_RETRACT_RECOVERF       = _UxGT("Unretr. FR");
   LSTR MSG_AUTORETRACT                    = _UxGT("Auto-Retract");
-  LSTR MSG_FILAMENTCHANGE                 = _UxGT("Verv. Filament");
+  LSTR MSG_FILAMENTCHANGE                 = _UxGT("Vervang filament");
   LSTR MSG_FILAMENTCHANGE_E               = _UxGT("Verv. Filament *");
   LSTR MSG_ATTACH_MEDIA                   = _UxGT("Init. SD kaart");
-  LSTR MSG_CHANGE_MEDIA                   = _UxGT("Verv. SD Kaart");
+  LSTR MSG_CHANGE_MEDIA                   = _UxGT("SD kaart uitwerpen");
   LSTR MSG_ZPROBE_OUT                     = _UxGT("Z probe uit. bed");
   LSTR MSG_BLTOUCH_SELFTEST               = _UxGT("BLTouch Zelf-Test");
   LSTR MSG_BLTOUCH_RESET                  = _UxGT("Reset BLTouch");
-  LSTR MSG_HOME_FIRST                     = _UxGT("Home %s Eerst");
-  LSTR MSG_ZPROBE_ZOFFSET                 = _UxGT("Z Offset");  // accepted English term in Dutch
+  LSTR MSG_MANUAL_DEPLOY                  = _UxGT("Bevestig Z-probe");
+  LSTR MSG_MANUAL_STOW                    = _UxGT("Verwijder Z-probe");
+  LSTR MSG_HOME_FIRST                     = _UxGT("%s moet in thuispos.");
+  LSTR MSG_ZPROBE_ZOFFSET                 = _UxGT("Z-probe comp.");
+  LSTR MSG_MOVE_NOZZLE_TO_BED             = _UxGT("Verpl. nozzle nr bed");
   LSTR MSG_BABYSTEP_X                     = _UxGT("Babystap X");
   LSTR MSG_BABYSTEP_Y                     = _UxGT("Babystap Y");
   LSTR MSG_BABYSTEP_Z                     = _UxGT("Babystap Z");
   LSTR MSG_BABYSTEP_N                     = _UxGT("Babystap @");
-  LSTR MSG_ENDSTOP_ABORT                  = _UxGT("Endstop afbr.");
+  LSTR MSG_ENDSTOP_ABORT                  = _UxGT("Eindstop stopt print");
   LSTR MSG_HEATING_FAILED_LCD             = _UxGT("Verwarm fout");
   LSTR MSG_ERR_REDUNDANT_TEMP             = _UxGT("Redun. temp fout");
   LSTR MSG_THERMAL_RUNAWAY                = _UxGT("Therm. wegloop");
@@ -166,8 +189,11 @@ namespace Language_nl {
   LSTR MSG_ERR_MINTEMP                    = _UxGT("Err: Min. temp");
   LSTR MSG_HALTED                         = _UxGT("PRINTER GESTOPT");
   LSTR MSG_PLEASE_RESET                   = _UxGT("Reset A.U.B.");
-  LSTR MSG_HEATING                        = _UxGT("Warmen...");
-  LSTR MSG_BED_HEATING                    = _UxGT("Bed warmen");
+  LSTR MSG_PREHEATING                     = _UxGT("Voorverwarmen...");
+  LSTR MSG_HEATING                        = _UxGT("Verwarmen...");
+  LSTR MSG_COOLING                        = _UxGT("Afkoelen...");
+  LSTR MSG_BED_HEATING                    = _UxGT("Bed verwarmen...");
+  LSTR MSG_BED_COOLING                    = _UxGT("Bed afkoelen...");
   LSTR MSG_DELTA_CALIBRATE                = _UxGT("Delta Calibratie");
   LSTR MSG_DELTA_CALIBRATE_X              = _UxGT("Kalibreer X");
   LSTR MSG_DELTA_CALIBRATE_Y              = _UxGT("Kalibreer Y");
@@ -201,6 +227,7 @@ namespace Language_nl {
   LSTR MSG_DRIVE_STRENGTH                 = _UxGT("Motorstroom");
 
   LSTR MSG_DAC_EEPROM_WRITE               = _UxGT("DAC Opslaan");
+  LSTR MSG_FILAMENT_CHANGE_HEADER         = _UxGT("FILAMENT WISSELEN");
   LSTR MSG_FILAMENT_CHANGE_OPTION_RESUME  = _UxGT("Hervat print");
   LSTR MSG_FILAMENT_CHANGE_NOZZLE         = _UxGT(" Nozzle: "); // accepted English term
   //
@@ -210,7 +237,7 @@ namespace Language_nl {
   #if LCD_HEIGHT >= 4
     // Up to 3 lines
     LSTR MSG_FILAMENT_CHANGE_INIT         = _UxGT(MSG_3_LINE("Wacht voor start", "filament te", "verwisselen"));
-    LSTR MSG_FILAMENT_CHANGE_UNLOAD       = _UxGT(MSG_3_LINE("Wacht voor", "filament uit", "te laden"));
+    LSTR MSG_FILAMENT_CHANGE_UNLOAD       = _UxGT(MSG_3_LINE("Bezig met", "filament terug", "te draaien"));
     LSTR MSG_FILAMENT_CHANGE_HEAT         = _UxGT(MSG_2_LINE("Klik knop om...", "verw. nozzle.")); //nozzle accepted English term
     LSTR MSG_FILAMENT_CHANGE_HEATING      = _UxGT(MSG_2_LINE("Nozzle verw.", "Wacht a.u.b."));
     LSTR MSG_FILAMENT_CHANGE_INSERT       = _UxGT(MSG_3_LINE("Laad filament", "en druk knop", "om verder..."));
@@ -226,4 +253,9 @@ namespace Language_nl {
     LSTR MSG_FILAMENT_CHANGE_LOAD         = _UxGT(MSG_2_LINE("Wacht voor", "inladen..."));
     LSTR MSG_FILAMENT_CHANGE_RESUME       = _UxGT(MSG_2_LINE("Wacht voor", "printing..."));
   #endif
+
+  LSTR MSG_PROBE_WIZARD                   = _UxGT("Z-probe comp. meten");
+  LSTR MSG_PROBE_WIZARD_PROBING           = _UxGT("Voorbereiden...");
 }
+
+//nozzle vs extruder
