@@ -2362,5 +2362,9 @@ void set_axis_is_at_home(const AxisEnum axis) {
   void set_home_offset(const AxisEnum axis, const_float_t v) {
     home_offset[axis] = v;
     update_workspace_offset(axis);
+
+    #if ENABLED(MESH_BED_LEVELING)
+    bedlevel.recalculate_positions();
+    #endif
   }
 #endif

@@ -1903,6 +1903,7 @@ void MarlinSettings::postprocess() {
             if (!validating) bedlevel.reset();
             for (uint16_t q = mesh_num_x * mesh_num_y; q--;) EEPROM_READ(dummyf);
           }
+          bedlevel.recalculate_positions();
         #else
           // MBL is disabled - skip the stored data
           for (uint16_t q = mesh_num_x * mesh_num_y; q--;) EEPROM_READ(dummyf);

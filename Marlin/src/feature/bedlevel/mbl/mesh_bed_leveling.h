@@ -22,6 +22,7 @@
 #pragma once
 
 #include "../../../inc/MarlinConfig.h"
+#include "../../../module/motion.h"
 
 enum MeshLevelingState : char {
   MeshReport,     // G29 S0
@@ -45,6 +46,8 @@ public:
   mesh_bed_leveling();
 
   static void report_mesh();
+
+  static void recalculate_positions();
 
   static void reset();
 
