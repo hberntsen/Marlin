@@ -1197,14 +1197,14 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 1600, 100 }  // Bart Venneker Frits Sijbel
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 3200, 96 }  // Frits Sijbel, Gerrie
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }  // Bart Venneker
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 3.5, 25 }  // Frits Sijbel, Gerrie
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1217,7 +1217,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 1000, 10000 }   // Bart Venneker
+#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 500, 10000 }   // Frits Sijbel, Gerrie
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
