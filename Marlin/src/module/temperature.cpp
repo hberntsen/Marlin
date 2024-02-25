@@ -4734,9 +4734,9 @@ void Temperature::isr() {
       const bool heating = isHeatingHotend(e);
       ui.status_printf(0,
         #if HAS_MULTI_HOTEND
-          F("E%c " S_FMT), '1' + e
+          F(S_FMT " %c " S_FMT), GET_TEXT(MSG_EXTRUDER), '1' + e
         #else
-          F("E1 " S_FMT)
+          F(S_FMT " " S_FMT), GET_TEXT(MSG_EXTRUDER)
         #endif
         , heating ? GET_TEXT_F(MSG_HEATING) : GET_TEXT_F(MSG_COOLING)
       );
