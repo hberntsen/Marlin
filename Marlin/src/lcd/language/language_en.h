@@ -622,6 +622,7 @@ namespace Language_en {
   LSTR MSG_PLEASE_WAIT                    = _UxGT("Please wait...");
   LSTR MSG_PLEASE_RESET                   = _UxGT("Please Reset");
   LSTR MSG_PREHEATING                     = _UxGT("Preheating...");
+  LSTR MSG_EXTRUDER                       = _UxGT("Extruder");
   LSTR MSG_HEATING                        = _UxGT("Heating...");
   LSTR MSG_COOLING                        = _UxGT("Cooling...");
   LSTR MSG_BED_HEATING                    = _UxGT("Bed Heating...");
