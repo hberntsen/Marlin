@@ -38,6 +38,8 @@ namespace Language_nl {
   LSTR LANGUAGE                           = _UxGT("Dutch");
 
   LSTR WELCOME_MSG                        = MACHINE_NAME _UxGT(" gereed");
+  LSTR MSG_YES                            = _UxGT("Ja");
+  LSTR MSG_NO                             = _UxGT("Nee");
   LSTR MSG_BACK                           = _UxGT("Terug");
   LSTR MSG_BUTTON_INIT                    = _UxGT("Reset");
   LSTR MSG_BUTTON_CANCEL                  = _UxGT("Annuleren");
@@ -47,6 +49,7 @@ namespace Language_nl {
   LSTR MSG_MEDIA_REMOVED                  = _UxGT("Kaart verwijderd");
   LSTR MSG_LCD_ENDSTOPS                   = _UxGT("Eindstop"); // Max length 8 characters
   LSTR MSG_LCD_SOFT_ENDSTOPS              = _UxGT("Soft eindstops");
+  LSTR MSG_LCD_ENDSTOPS                   = _UxGT("Endstops"); // Max length 8 characters
   LSTR MSG_LCD_VIEW_ENDSTOPS              = _UxGT("Eindstop status");
   LSTR MSG_MAIN_MENU                      = _UxGT("Hoofdmenu");
   LSTR MSG_ADVANCED_SETTINGS              = _UxGT("Geavanceerd");

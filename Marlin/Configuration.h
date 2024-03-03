@@ -2140,6 +2140,8 @@
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
 
+#define VIEW_ENDSTOP_MENU 1
+
 // @section calibrate
 
 /**

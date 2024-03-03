@@ -52,6 +52,13 @@
   #include "../../feature/bedlevel/bedlevel.h"
 #endif
 
+#if ENABLED(VIEW_ENDSTOP_MENU)
+  #include "../../module/endstops.h"
+  #if USES_Z_MIN_PROBE_PIN
+    #include "../../module/probe.h"
+  #endif
+#endif
+
 //
 // "Motion" > "Move Axis" submenu
 //
@@ -200,6 +207,117 @@ void _menu_move_distance(const AxisEnum axis, const screenFunc_t func, const int
       _goto_menu_move_distance_e();
   }
 
+#endif
+
+#if ENABLED(VIEW_ENDSTOP_MENU)
+void _menu_view_endstops() {
+  TemporaryGlobalEndstopsState unlock_endstops(true);
+
+  START_MENU();
+  BACK_ITEM(MSG_MOTION);
+
+  #define VALUE_ITEM(MSG, VALUE, STYL)    do{ char msg[21]; strcpy_P(msg, PSTR(": ")); strcpy_P(msg + 2, VALUE); STATIC_ITEM_F(MSG, STYL, msg); }while(0)
+  #define ES_ITEM(is_hit, name) VALUE_ITEM(name, (is_hit) ? GET_TEXT(MSG_YES) : GET_TEXT(MSG_NO), SS_LEFT)
+  #define ES_REPORT(S) ES_ITEM(TEST(endstops.state(), S), F(STR_##S))
+
+  #if USE_X_MIN
+    ES_REPORT(X_MIN);
+  #endif
+  #if USE_X2_MIN
+    ES_REPORT(X2_MIN);
+  #endif
+  #if USE_X_MAX
+    ES_REPORT(X_MAX);
+  #endif
+  #if USE_X2_MAX
+    ES_REPORT(X2_MAX);
+  #endif
+  #if USE_Y_MIN
+    ES_REPORT(Y_MIN);
+  #endif
+  #if USE_Y2_MIN
+    ES_REPORT(Y2_MIN);
+  #endif
+  #if USE_Y_MAX
+    ES_REPORT(Y_MAX);
+  #endif
+  #if USE_Y2_MAX
+    ES_REPORT(Y2_MAX);
+  #endif
+  #if USE_Z_MIN
+    ES_REPORT(Z_MIN);
+  #endif
+  #if USE_Z2_MIN
+    ES_REPORT(Z2_MIN);
+  #endif
+  #if USE_Z3_MIN
+    ES_REPORT(Z3_MIN);
+  #endif
+  #if USE_Z4_MIN
+    ES_REPORT(Z4_MIN);
+  #endif
+  #if USE_Z_MAX
+    ES_REPORT(Z_MAX);
+  #endif
+  #if USE_Z2_MAX
+    ES_REPORT(Z2_MAX);
+  #endif
+  #if USE_Z3_MAX
+    ES_REPORT(Z3_MAX);
+  #endif
+  #if USE_Z4_MAX
+    ES_REPORT(Z4_MAX);
+  #endif
+  #if USE_I_MIN
+    ES_REPORT(I_MIN);
+  #endif
+  #if USE_I_MAX
+    ES_REPORT(I_MAX);
+  #endif
+  #if USE_J_MIN
+    ES_REPORT(J_MIN);
+  #endif
+  #if USE_J_MAX
+    ES_REPORT(J_MAX);
+  #endif
+  #if USE_K_MIN
+    ES_REPORT(K_MIN);
+  #endif
+  #if USE_K_MAX
+    ES_REPORT(K_MAX);
+  #endif
+  #if USE_U_MIN
+    ES_REPORT(U_MIN);
+  #endif
+  #if USE_U_MAX
+    ES_REPORT(U_MAX);
+  #endif
+  #if USE_V_MIN
+    ES_REPORT(V_MIN);
+  #endif
+  #if USE_V_MAX
+    ES_REPORT(V_MAX);
+  #endif
+  #if USE_W_MIN
+    ES_REPORT(W_MIN);
+  #endif
+  #if USE_W_MAX
+    ES_REPORT(W_MAX);
+  #endif
+  #if ENABLED(PROBE_ACTIVATION_SWITCH)
+    ES_ITEM(probe_switch_activated(), F(STR_PROBE_EN));
+  #endif
+  #if USES_Z_MIN_PROBE_PIN
+    ES_ITEM(PROBE_TRIGGERED(), F(STR_Z_PROBE));
+  #endif
+  #if HAS_FILAMENT_SENSOR
+    ES_ITEM(READ(FIL_RUNOUT1_PIN) != FIL_RUNOUT1_STATE, F(STR_FILAMENT));
+  #endif
+
+  END_MENU();
+
+  ui.refresh(LCDVIEW_CALL_REDRAW_NEXT);
+}
 #endif
 
 void menu_move() {
@@ -414,6 +532,10 @@ void menu_motion() {
   // Disable Steppers
   //
   GCODES_ITEM(MSG_DISABLE_STEPPERS, F("M84"));
+
+  #if ENABLED(VIEW_ENDSTOP_MENU)
+    SUBMENU(MSG_LCD_VIEW_ENDSTOPS, _menu_view_endstops);
+  #endif // VIEW_ENDSTOP_MENU
 
   END_MENU();
 }
