@@ -421,6 +421,8 @@ namespace Language_en {
   LSTR MSG_N_STEPS                        = _UxGT("@ steps/mm");
   LSTR MSG_E_STEPS                        = _UxGT("E steps/mm");
   LSTR MSG_EN_STEPS                       = _UxGT("* Steps/mm");
+  LSTR MSG_STEPS_COARSE                   = _UxGT("Coarse edit:");
+  LSTR MSG_STEPS_FINE                     = _UxGT("Fine tune:");
   LSTR MSG_TEMPERATURE                    = _UxGT("Temperature");
   LSTR MSG_MOTION                         = _UxGT("Motion");
   LSTR MSG_FILAMENT                       = _UxGT("Filament");

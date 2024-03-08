@@ -647,6 +647,11 @@ void menu_advanced_steps_per_mm() {
   START_MENU();
   BACK_ITEM(MSG_ADVANCED_SETTINGS);
 
+  STATIC_ITEM(MSG_STEPS_COARSE, SS_INVERT);
+  LOOP_NUM_AXES(a)
+    EDIT_ITEM_FAST_N(float72_25, a, MSG_N_STEPS, &planner.settings.axis_steps_per_mm[a], 5, 9999, []{ planner.refresh_positioning(); });
+
+  STATIC_ITEM(MSG_STEPS_FINE, SS_INVERT);
   LOOP_NUM_AXES(a)
     EDIT_ITEM_FAST_N(float72, a, MSG_N_STEPS, &planner.settings.axis_steps_per_mm[a], 5, 9999, []{ planner.refresh_positioning(); });
 
