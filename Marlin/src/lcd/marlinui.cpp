@@ -62,6 +62,10 @@ MarlinUI ui;
   #include "../module/printcounter.h"
 #endif
 
+#if ENABLED(SCREENSHOT)
+  #include "../gcode/lcd/screenshot.h"
+#endif
+
 #if HAS_WIRED_LCD || HAS_PREHEAT
   #include "../module/temperature.h"
 #endif
@@ -1187,6 +1191,10 @@ void MarlinUI::init() {
             u8g.setColorIndex(1);                 // And reset the color
             run_current_screen();                 // Draw and process the current screen
             first_page = false;
+
+#if ENABLED(SCREENSHOT)
+            screenshot.on_display_update((u8g_pb_t *)(u8g.getU8g()->dev->dev_mem));
+#endif
 
             // The screen handler can clear drawing_screen for an action that changes the screen.
             // If still drawing and there's another page, update max-time and return now.
