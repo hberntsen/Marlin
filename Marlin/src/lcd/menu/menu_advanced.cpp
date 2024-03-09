@@ -766,6 +766,10 @@ void menu_advanced_settings() {
     EDIT_ITEM(bool, MSG_ENDSTOP_ABORT, &planner.abort_on_endstop_hit);
   #endif
 
+  #if ENABLED(Z_MIN_PROBE_REPEATABILITY_TEST)
+    GCODES_ITEM(MSG_M48_TEST, F("G28O\nM48 P10"));
+  #endif
+
   #if ENABLED(SD_FIRMWARE_UPDATE)
     EDIT_ITEM(bool, MSG_MEDIA_UPDATE, &sd_update_state, []{
       //

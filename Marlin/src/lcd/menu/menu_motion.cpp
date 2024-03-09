@@ -524,10 +524,6 @@ void menu_motion() {
     SUBMENU(MSG_BED_TRAMMING, _lcd_bed_tramming);
   #endif
 
-  #if ENABLED(Z_MIN_PROBE_REPEATABILITY_TEST)
-    GCODES_ITEM(MSG_M48_TEST, F("G28O\nM48 P10"));
-  #endif
-
   //
   // Disable Steppers
   //
