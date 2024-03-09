@@ -55,6 +55,11 @@
   #include "../../libs/buzzer.h"
 #endif
 
+#if HAS_LEVELING
+  #include "../../module/planner.h"
+  #include "../../feature/bedlevel/bedlevel.h"
+#endif
+
 #include "../../core/debug_out.h"
 
 #define HAS_DEBUG_MENU ENABLED(LCD_PROGRESS_BAR_TEST)
@@ -63,6 +68,13 @@ void menu_advanced_settings();
 #if ANY(DELTA_CALIBRATION_MENU, DELTA_AUTO_CALIBRATION)
   void menu_delta_calibrate();
 #endif
+
+#if ENABLED(AUTO_BED_LEVELING_UBL)
+  void _lcd_ubl_level_bed();
+#elif ENABLED(LCD_BED_LEVELING)
+  void menu_bed_leveling();
+#endif
+
 
 #if ENABLED(LCD_PROGRESS_BAR_TEST)
 
@@ -497,6 +509,48 @@ void menu_configuration() {
     SUBMENU(MSG_ZPROBE_ZOFFSET, lcd_babystep_zoffset);
   #elif HAS_BED_PROBE
     EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_ZPROBE_ZOFFSET, &probe.offset.z, Z_PROBE_OFFSET_RANGE_MIN, Z_PROBE_OFFSET_RANGE_MAX);
+  #endif
+
+  //
+  // Probe Offset Wizard
+  //
+  #if ENABLED(PROBE_OFFSET_WIZARD)
+    SUBMENU(MSG_PROBE_WIZARD, goto_probe_offset_wizard);
+  #endif
+
+
+  //
+  // Level Bed
+  //
+  #if ENABLED(AUTO_BED_LEVELING_UBL)
+
+    SUBMENU(MSG_UBL_LEVEL_BED, _lcd_ubl_level_bed);
+
+  #elif ENABLED(LCD_BED_LEVELING)
+
+    if (!g29_in_progress)
+      SUBMENU(MSG_BED_LEVELING, menu_bed_leveling);
+
+  #elif HAS_LEVELING && DISABLED(SLIM_LCD_MENUS)
+
+    #if DISABLED(PROBE_MANUALLY)
+      GCODES_ITEM(MSG_LEVEL_BED, F("G29N"));
+    #endif
+
+    if (all_axes_homed() && leveling_is_valid()) {
+      bool show_state = planner.leveling_active;
+      EDIT_ITEM(bool, MSG_BED_LEVELING, &show_state, _lcd_toggle_bed_leveling);
+    }
+
+    #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
+      editable.decimal = planner.z_fade_height;
+      EDIT_ITEM_FAST(float3, MSG_Z_FADE_HEIGHT, &editable.decimal, 0, 100, []{ set_z_fade_height(editable.decimal); });
+    #endif
+
+  #endif
+
+  #if ENABLED(LCD_BED_TRAMMING) && DISABLED(LCD_BED_LEVELING)
+    SUBMENU(MSG_BED_TRAMMING, _lcd_bed_tramming);
   #endif
 
   //

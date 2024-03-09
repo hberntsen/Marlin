@@ -47,11 +47,6 @@
   #include "../../module/delta.h"
 #endif
 
-#if HAS_LEVELING
-  #include "../../module/planner.h"
-  #include "../../feature/bedlevel/bedlevel.h"
-#endif
-
 #if ENABLED(VIEW_ENDSTOP_MENU)
   #include "../../module/endstops.h"
   #if USES_Z_MIN_PROBE_PIN
@@ -418,12 +413,6 @@ void menu_move() {
   }
 #endif
 
-#if ENABLED(AUTO_BED_LEVELING_UBL)
-  void _lcd_ubl_level_bed();
-#elif ENABLED(LCD_BED_LEVELING)
-  void menu_bed_leveling();
-#endif
-
 #if ENABLED(ASSISTED_TRAMMING_WIZARD)
   void goto_tramming_wizard();
 #endif
@@ -477,51 +466,10 @@ void menu_motion() {
   #endif
 
   //
-  // Probe Offset Wizard
-  //
-  #if ENABLED(PROBE_OFFSET_WIZARD)
-    SUBMENU(MSG_PROBE_WIZARD, goto_probe_offset_wizard);
-  #endif
-
-  //
   // Assisted Bed Tramming
   //
   #if ENABLED(ASSISTED_TRAMMING_WIZARD)
     SUBMENU(MSG_TRAMMING_WIZARD, goto_tramming_wizard);
-  #endif
-
-  //
-  // Level Bed
-  //
-  #if ENABLED(AUTO_BED_LEVELING_UBL)
-
-    SUBMENU(MSG_UBL_LEVEL_BED, _lcd_ubl_level_bed);
-
-  #elif ENABLED(LCD_BED_LEVELING)
-
-    if (!g29_in_progress)
-      SUBMENU(MSG_BED_LEVELING, menu_bed_leveling);
-
-  #elif HAS_LEVELING && DISABLED(SLIM_LCD_MENUS)
-
-    #if DISABLED(PROBE_MANUALLY)
-      GCODES_ITEM(MSG_LEVEL_BED, F("G29N"));
-    #endif
-
-    if (all_axes_homed() && leveling_is_valid()) {
-      bool show_state = planner.leveling_active;
-      EDIT_ITEM(bool, MSG_BED_LEVELING, &show_state, _lcd_toggle_bed_leveling);
-    }
-
-    #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
-      editable.decimal = planner.z_fade_height;
-      EDIT_ITEM_FAST(float3, MSG_Z_FADE_HEIGHT, &editable.decimal, 0, 100, []{ set_z_fade_height(editable.decimal); });
-    #endif
-
-  #endif
-
-  #if ENABLED(LCD_BED_TRAMMING) && DISABLED(LCD_BED_LEVELING)
-    SUBMENU(MSG_BED_TRAMMING, _lcd_bed_tramming);
   #endif
 
   //

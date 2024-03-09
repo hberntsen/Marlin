@@ -241,7 +241,7 @@ void menu_bed_leveling() {
              is_valid = leveling_is_valid();
 
   START_MENU();
-  BACK_ITEM(MSG_MOTION);
+  BACK_ITEM(MSG_CONFIGURATION);
 
   // Auto Home if not using manual probing
   #if NONE(PROBE_MANUALLY, MESH_BED_LEVELING)
