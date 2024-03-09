@@ -243,13 +243,14 @@ void menu_bed_leveling() {
   START_MENU();
   BACK_ITEM(MSG_CONFIGURATION);
 
-  // Auto Home if not using manual probing
-  #if NONE(PROBE_MANUALLY, MESH_BED_LEVELING)
-    if (!is_homed) GCODES_ITEM(MSG_AUTO_HOME, FPSTR(G28_STR));
-  #endif
 
   // Level Bed
   #if ANY(PROBE_MANUALLY, MESH_BED_LEVELING)
+    // Auto Home if not using manual probing
+    #if NONE(PROBE_MANUALLY, MESH_BED_LEVELING) && !
+      if (!is_homed) GCODES_ITEM(MSG_AUTO_HOME, FPSTR(G28_STR));
+    #endif
+
     // Manual leveling uses a guided procedure
     SUBMENU(MSG_LEVEL_BED, _lcd_level_bed_continue);
   #else
