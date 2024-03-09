@@ -296,10 +296,6 @@ void menu_bed_leveling() {
     SUBMENU(MSG_BED_TRAMMING, _lcd_bed_tramming);
   #endif
 
-  #if ENABLED(EEPROM_SETTINGS)
-    ACTION_ITEM(MSG_LOAD_EEPROM, ui.load_settings);
-    ACTION_ITEM(MSG_STORE_EEPROM, ui.store_settings);
-  #endif
   END_MENU();
 }
 
