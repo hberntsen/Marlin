@@ -505,6 +505,12 @@ void menu_configuration() {
 
   SUBMENU(MSG_ADVANCED_SETTINGS, menu_advanced_settings);
 
+  #if HAS_M206_COMMAND
+    // M428 - Set Home Offsets
+    ACTION_ITEM(MSG_SET_HOME_OFFSETS, []{ queue.inject(F("M428")); ui.return_to_status(); });
+  #endif
+
+
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
     SUBMENU(MSG_ZPROBE_ZOFFSET, lcd_babystep_zoffset);
   #elif HAS_BED_PROBE
