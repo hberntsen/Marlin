@@ -206,6 +206,7 @@
  * M250 - Set LCD contrast: "M250 C<contrast>" (0-63). (Requires LCD support)
  * M255 - Set LCD sleep time: "M255 S<minutes>" (0-99). (Requires an LCD with brightness or sleep/wake)
  * M256 - Set LCD brightness: "M256 B<brightness>" (0-255). (Requires an LCD with brightness control)
+ * M257 - Screenshot: "M257 <N to re-render now>"
  * M260 - i2c Send Data (Requires EXPERIMENTAL_I2CBUS)
  * M261 - i2c Request Data (Requires EXPERIMENTAL_I2CBUS)
  * M280 - Set servo position absolute: "M280 P<index> S<angle|µs>". (Requires servos)
@@ -907,6 +908,11 @@ private:
   #if HAS_LCD_BRIGHTNESS
     static void M256();
     static void M256_report(const bool forReplay=true);
+  #endif
+
+
+  #if ENABLED(SCREENSHOT)
+    static void M257();
   #endif
 
   #if ENABLED(EXPERIMENTAL_I2CBUS)
