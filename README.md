@@ -1,8 +1,34 @@
 # Printer in bedrijf stellen
 
-<!--Tussen stap 1 en stap 2: test of de eindstops werken-->
+## 1. Basis
+zoals in de gebruiksaanwijzing
+## 2. Motoren testen
+zoals in de gebruiksaanwijzing
+## 3. Verwarming van nozzle en bed
+zoals in de gebruiksaanwijzing
+## 4. Stel de extruder in
+zoals in de gebruiksaanwijzing
+## 5. Eindschakelaars
+1. Test of eindstop schakelaars goed aangesloten zijn via het menu `Beweging` -> `Eindstop status`.
+2. Monteer de schakelaar zoals in de gebruiksaanwijzing staat
+## 6. Auto home (nu thuispositie)
+## 7. Afstellen
+1. Denk aan het schoonmaken van de printkop
+2. Voer in het menu [`Configuratie`](#configuratie) de [`Zet X0 Y0 Z0`](#zet-x0-y0-z0) stap uit.
+3. Meet via menu [`Configuratie`](#configuratie) de [Z-probe compensatie](#z-probe-compensatie-meten).
+4. Voer de [bednivellering](#bednivellering) uit.
+## 8. Voorbereiding Cura
+Niet meer nodig 
+## 9. Cura installeren
+Zoals in het boekje, behalve:
 
-### Je eigen naam op de printer
+* De Start G-code hoeft in principe niet aangepast te worden. Waar we voorheen dus twee regels toe moesten voegen hoeft dat niet meer. Ik kan wel aanraden om daaronder de extrude waarde te verhogen van 3 naar 20. Dus: `G1 F200 E20 ;extrude 20mm of feed stock`. Dan zijn de skirt lijnen ook niet meer zo nodig omdat er bij de start al wat meer filament uit komt.
+* De versie G-code staat in de handleiding op RepRap. Alhoewel dat werkt is er ook Marlin te kiezen en dat is de software die op de printer staat. Beide werken bij mij maar Marlin lijkt mij dan beter.
+
+## 10. Klaar
+zoals in de gebruiksaanwijzing
+
+## Je eigen naam op de printer
 
 Plaats een bestandje genaamd `auto0.g` met de volgende inhoud:
 
@@ -12,7 +38,20 @@ M117 Harms printer
 
 Alles achter M117 zal met het opstarten van de printer op het scherm verschijnen.
 
+## Voor elke print
+
+Pagina 17
+
+Iedere keer wanneer de printer uit is geweest moet je de printer opnieuw afstellen. (ik denk niet dat dit tussen de prints nodig is aangezien de Z motoren dan niet uit zijn geweest?)
+
+1. Nozzle schoonmaken
+2. Glasplaat schoonmaken
+3. Draai bednivellering
+4. Instellingen opslaan
+
 # Schermen
+
+## Statusscherm
 
 Wanneer de printer start zie je het infoscherm. 
 
@@ -41,7 +80,7 @@ Wanneer het bed of de nozzle verwarmd worden verandert die status:
 
 Aan de bovenkant van de icoontjes staat de gewenste temperatuur, onder het icoontje de huidige temperatuur. De nozzle loopt vol tijdens het verwarmen. Als de nozzle warm is dan zal deze gevuld zijn wanneer het verwarmingselement aan staat en leeg zijn wanneer die uit is. Bij het bed is dat te zien aan het verdwijnen/verschijnen van het balkje rechts van het bed icoontje.
 
-## Tijdens het printen
+### Tijdens het printen
 Tijdens het printen verandert de X-Y-Z status in E-Z. E is de hoeveelheid filament die verbruikt is. Verder rouleert de printer ook tussen het percentage van de huidige print, de E (hoe lang de printer bezig is geweest met deze print), R (hoe lang het nog duurt). De geschatte tijd is in het begin nog te lang, als de printer even bezig is wordt deze betrouwbaarder.
 
 # Het menu
@@ -64,15 +103,18 @@ Hierin zijn de verschillende menu's beschikbaar.
 * `As verplaatsen`: verplaats de printkop en bed
 * `Naar thuispositie`: de printkop beweegt in alle richtingen tweemaal naar de eindschakelaars
 * `Motoren uit`: zet alle motoren uit zodat ze met de hand gedraaid kunnen worden
-* `Eindstop status`: stelt je in staat om alle eindstopschakelaars te testen
+* `Eindstop status`: stelt je in staat om alle eindstopschakelaars te testen. De schakelaar moet op `Nee` staan wanneer deze niet ingedrukt is.
 
 ### As verplaatsen
 
 ![](./menu-beweging-as-verplaatsen-volledig.png)
-Hier kunnen alle motoren bediend worden. De `Soft eindstops` optie begrenst de maximale bewegingsvrijheid softwarematig. Het is daarom aanbevolen de printer eerst in de thuispositie te brengen voor de beste werking. Bij het instellen van de X0Y0Z0 positie kan het nodig zijn deze optie uit te zetten.
+Hier kunnen alle motoren bediend worden. De `Soft eindstops` optie begrenst de maximale bewegingsvrijheid softwarematig. Het is daarom aanbevolen de printer eerst in de thuispositie te brengen voor de beste werking.
 
 > [!NOTE]  
 > De `Verplaats filament` optie zal een waarschuwing geven wanneer de nozzle koud is. Verwarm de nozzle eerst via het `Temperatuur` menu in het hoofdmenu.
+
+> [!NOTE]  
+> De `Soft eindstops` optie werkt niet voor de minimale Z-as positie omdat we de eindstop al een stukje boven het bed geraakt wordt.
 
 ## Temperatuur
 
@@ -99,20 +141,22 @@ Deze optie kan als volgt gebruikt worden:
 1. Zet de printer in de thuispositie, via de `Naar thuispositie` optie in het hoofdmenu.
 2. Verplaats via het menu `Beweging` -> `As verplaatsen` de X-as naar de linkerrand van de glasplaat, tot 2 cm vanaf de rand.
 3. Verplaats de Y-as naar de voorkant van de glasplaat, tot 4 cm vanaf de rand.
-4. Verplaats de Z-as nauwkeurig richting het printbed. Eerst met stappen van 1mm, het laatste stukje met 0.1mm. Meet met een papiertje tot je enige weerstand voelt tussen de nozzle en de glasplaat.
+4. Indien je geen Z-probe gaat gebruiken, ga nu hieronder door met de fijnafstelling van de Z-as
 5. Activeer nu de optie `Zet X0 Y0 Z0` in het `Configuratie` menu.
 6. Sla nu de instellingen op, via `Configuratie` -> `Instellingen opsl.`.
 
-Indien er geen Z-probe aanwezig is moeten de spindels handmatig rechtgezet worden, anders zijn de volgende stappen optioneel.
+#### Fijnafstelling Z-as
 
-1. Zet de printer uit (of de motoren in het menu `Beweging`).
-2. Beweeg met de hand de printkop naar links 
-3. Minimaliseer de afstand van de nozzle tot het bed met een papiertje door aan de linker spindel te draaien.
-4. Beweeg de printkop nu naar rechts
-5. Controleer de afstand van nozzle tot het bed. Corrigeer met de rechterspindel.
-6. Herhaal vanaf 2 om de Z-as zo goed mogelijk in te stellen.
+1. Verplaats de Z-as nauwkeurig richting het printbed. Eerst met stappen van 1mm, het laatste stukje met 0.1mm. Meet met een papiertje tot je enige weerstand voelt tussen de nozzle en de glasplaat.
+2. Activeer nu de optie `Zet X0 Y0 Z0` in het `Configuratie` menu.
+3. Sla nu de instellingen op, via `Configuratie` -> `Instellingen opsl.`.
+4. Verplaats X-as naar de rechterkant van het bed
+5. Probeer nu dezelfde weerstand rechts te krijgen door met de hand aan de rechter spindel te draaien
 
-### Z-probe lengte meten
+> [!NOTE]
+> Na het uitvoeren van Bednivellering wordt Z0 opnieuw bepaald aan de hand van de probe. Klopt de Z0 toch niet helemaal? Verander dan de `Z-probe comp.` in het `Bednivellering` menu en voer de bednivellering opnieuw uit.
+
+### Z-probe compensatie meten
 
 De printer moet weten na hoeveeel millimeter beweging de Z-probe eindstop klikt. Deze optie helpt je de afstand van de nozzle tot het schakelmoment te meten.
 
@@ -127,19 +171,25 @@ Bij het selecteren van deze optie wordt de volgende procedure gevolgd:
 7. De meting wordt gedaan
 8. De printer vraagt nu om de Z-probe te verwijderen, verwijder die
 9. Druk op de knop
-10. Verplaats nu via het menu de nozzle richting het printbed, meet met een papiertje
+10. Verplaats nu via het menu de nozzle richting het printbed, meet met een papiertje dat je een héél klein beetje weerstand voelt.
 11. Wanneer de nozzle het papietje net raakt, kies de optie `Klaar` in het menu
-12. De printer weet nu de lengte van de Z-probe. Sla via het `Configuratie` menu de instellingen op.
+12. De printer weet nu hoeveel die moet compenseren met de Z-probe. Sla via het `Configuratie` menu de instellingen op.
+
+> [!NOTE]
+> Zit de printkop te laag tijdens het printen? Dan zat je in deze stap te laag toen je `Klaar` koos in het menu. Je kan ook in het `Bednivellering` menu de `Z-probe comp.` waarde iets verhogen (en vice versa). Start een nieuwe bednivellering na het aanpassen.
 
 ### Bednivellering
 
 ![](./menu-configuratie-bednivellering.png)
 
 > [!IMPORTANT]  
-> Voor deze optie is het belangrijk dat de Z-probe lengte gemeten is. De meetwaarde staat in de `Z-probe len.` in dit menu.
+> Voor deze optie is het belangrijk dat de Z-probe compensatie gemeten is. De meetwaarde staat in de `Z-probe comp.` in dit menu.
+
+> [!CAUTION]
+> Om te voorkomen dat de Z-probe smelt, zorg ervoor dat de printkop kouder dan 50 graden is voordat je de probe bevestigt.
 
 1. Kies `Start bednivellering`
-2. De printer zal nu zonder bevesgiging in beeld naar de thuispositie gaan.
+2. De printer zal nu zonder bevesgiging in beeld naar de thuispositie gaan
 3. De printer vraagt om de Z-probe te bevestigen
 4. Druk na het bevestigen op de draaiknop
 5. Het bed wordt nu verwarmd
@@ -161,7 +211,7 @@ De snelkoppelingen in het menu `Temperatuur` kunnen hier geconfigureerd worden.
 Onderaan het menu staan opties om de instellingen op te slaan. Normaal gesproken verliest de printer alle gedane instellingen wanneer deze uitgezet wordt. Pas bij de `Instellingen opsl` optie worden de instellingen bewaard. Ook de `Instellingen reset` optie zal dus de instellingen resetten maar de bewaarde instellingen nog niet veranderen, daarvoor moeten de geresette instellingen ook nog een keer opgeslagen worden. De `Instellingen laden` zal de laatst opgeslagen instellingen weer inladen. Dat is hetzelfde als de printer uit/aan zetten.
 
 > [!NOTE]  
-> Er moet een duidelijke piep komen wanneer je de knop indrukt, anders is er niets opgeslagen.
+> Er moet een duidelijke piep bij het opslaan, anders is er niets opgeslagen.
 
 ## Afstellen tijdens het printen
 
@@ -179,4 +229,4 @@ Tijdens het printen heeft het hoofdmenu een extra opties om de print te pauzeren
 
 
 > [!NOTE]  
-> Alle instellingen die je hier aanpast gelden eenmalig
+> De instellingen die je hier aanpast gelden eenmalig
