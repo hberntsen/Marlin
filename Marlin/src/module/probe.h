@@ -242,10 +242,23 @@ public:
       );
     }
 
-    static float min_x() { return _min_x() TERN_(NOZZLE_AS_PROBE, TERN_(HAS_HOME_OFFSET, - home_offset.x)); }
-    static float max_x() { return _max_x() TERN_(NOZZLE_AS_PROBE, TERN_(HAS_HOME_OFFSET, - home_offset.x)); }
-    static float min_y() { return _min_y() TERN_(NOZZLE_AS_PROBE, TERN_(HAS_HOME_OFFSET, - home_offset.y)); }
-    static float max_y() { return _max_y() TERN_(NOZZLE_AS_PROBE, TERN_(HAS_HOME_OFFSET, - home_offset.y)); }
+    static constexpr bool probe_is_below_nozzle() {
+      if(ENABLED(NOZZLE_AS_PROBE)) {
+        return true;
+      } else {
+        constexpr float offset[] = NOZZLE_TO_PROBE_OFFSET;
+        for(unsigned char i = 0; i < COUNT(offset); i++) {
+          if(offset[i] != 0)
+            return false;
+        }
+        return true;
+      }
+    }
+
+    static float min_x() { return _min_x() - (probe_is_below_nozzle() && ENABLED(HAS_HOME_OFFSET) ? home_offset.x : 0.f); }
+    static float max_x() { return _max_x() - (probe_is_below_nozzle() && ENABLED(HAS_HOME_OFFSET) ? home_offset.x : 0.f); }
+    static float min_y() { return _min_y() - (probe_is_below_nozzle() && ENABLED(HAS_HOME_OFFSET) ? home_offset.y : 0.f); }
+    static float max_y() { return _max_y() - (probe_is_below_nozzle() && ENABLED(HAS_HOME_OFFSET) ? home_offset.y : 0.f); }
 
     // constexpr helpers used in build-time static_asserts, relying on default probe offsets.
     class build_time {
