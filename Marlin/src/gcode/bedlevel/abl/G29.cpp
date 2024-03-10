@@ -879,6 +879,18 @@ G29_TYPE GcodeSuite::G29() {
 
       } // abl.topography_map
 
+      #if ENABLED(ABL_UPDATE_M206_Z)
+      if(!abl.dryrun) {
+        if (abl.verbose_level) {
+          SERIAL_ECHOLNPAIR_F("Old M206 Z home offset", home_offset.z, 8);
+        }
+        set_home_offset(Z_AXIS, -plane_equation_coefficients.d);
+        if (abl.verbose_level) {
+          SERIAL_ECHOLNPAIR_F("New M206 Z home offset", home_offset.z, 8);
+        }
+      }
+      #endif
+
     #endif // AUTO_BED_LEVELING_LINEAR
 
     #if ABL_PLANAR
@@ -893,6 +905,7 @@ G29_TYPE GcodeSuite::G29() {
         // Correct the current XYZ position based on the tilted plane.
         //
 
+      #if ! ENABLED(ABL_UPDATE_M206_Z)
         if (DEBUGGING(LEVELING)) DEBUG_POS("G29 uncorrected XYZ", current_position);
 
         xyze_pos_t converted = current_position;
@@ -911,6 +924,7 @@ G29_TYPE GcodeSuite::G29() {
         current_position = converted;
 
         if (DEBUGGING(LEVELING)) DEBUG_POS("G29 corrected XYZ", current_position);
+      #endif
 
         abl.reenable = true;
       }

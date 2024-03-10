@@ -2002,6 +2002,10 @@
   // Probe along the Y axis, advancing X after each column
   //#define PROBE_Y_FIRST
 
+  // Updates the logical Z0 to the mean measured distance.
+  // Change the M851 Z to apply an offset
+  #define ABL_UPDATE_M206_Z
+
   #if ENABLED(AUTO_BED_LEVELING_BILINEAR)
 
     // Beyond the probed grid, continue the implied tilt?
