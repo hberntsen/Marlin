@@ -684,10 +684,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    // BART Venneker, these PID values are from the PID autotune function.
-    #define DEFAULT_Kp 20.17
-    #define DEFAULT_Ki 1.41
-    #define DEFAULT_Kd 71.87
+    #define DEFAULT_Kp 23.96
+    #define DEFAULT_Ki 1.81
+    #define DEFAULT_Kd 79.50
   #endif
 #else
   #define BANG_MAX 255    // Limit hotend current while in bang-bang mode; 255=full current
