@@ -75,6 +75,10 @@
   extern abc_float_t offset_sensorless_adj;
 #endif
 
+#ifndef Z_PROBE_DEFAULT_SANITY_CHECK
+#define Z_PROBE_DEFAULT_SANITY_CHECK true
+#endif
+
 class Probe {
 public:
 
@@ -177,7 +181,7 @@ public:
       const ProbePtRaise raise_after        = PROBE_PT_NONE,
       const uint8_t      verbose_level      = 0,
       const bool         probe_relative     = true,
-      const bool         sanity_check       = true,
+      const bool         sanity_check       = Z_PROBE_DEFAULT_SANITY_CHECK,
       const_float_t      z_min_point        = Z_PROBE_LOW_POINT,
       const_float_t      z_clearance        = Z_TWEEN_SAFE_CLEARANCE,
       const bool         raise_after_is_rel = false
@@ -188,7 +192,7 @@ public:
       const ProbePtRaise raise_after        = PROBE_PT_NONE,
       const uint8_t      verbose_level      = 0,
       const bool         probe_relative     = true,
-      const bool         sanity_check       = true,
+      const bool         sanity_check       = Z_PROBE_DEFAULT_SANITY_CHECK,
       const_float_t      z_min_point        = Z_PROBE_LOW_POINT,
       const_float_t      z_clearance        = Z_TWEEN_SAFE_CLEARANCE,
       const bool         raise_after_is_rel = false
@@ -363,7 +367,7 @@ public:
 private:
   #if HAS_BED_PROBE
     static bool probe_down_to_z(const_float_t z, const_feedRate_t fr_mm_s);
-    static float run_z_probe(const bool sanity_check=true, const_float_t z_min_point=Z_PROBE_LOW_POINT, const_float_t z_clearance=Z_TWEEN_SAFE_CLEARANCE);
+    static float run_z_probe(const bool sanity_check=Z_PROBE_DEFAULT_SANITY_CHECK, const_float_t z_min_point=Z_PROBE_LOW_POINT, const_float_t z_clearance=Z_TWEEN_SAFE_CLEARANCE);
   #endif
 };
 
