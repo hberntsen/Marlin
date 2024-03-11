@@ -49,7 +49,6 @@ namespace Language_nl {
   LSTR MSG_MEDIA_REMOVED                  = _UxGT("Kaart verwijderd");
   LSTR MSG_LCD_ENDSTOPS                   = _UxGT("Eindstop"); // Max length 8 characters
   LSTR MSG_LCD_SOFT_ENDSTOPS              = _UxGT("Soft eindstops");
-  LSTR MSG_LCD_ENDSTOPS                   = _UxGT("Endstops"); // Max length 8 characters
   LSTR MSG_LCD_VIEW_ENDSTOPS              = _UxGT("Eindstop status");
   LSTR MSG_MAIN_MENU                      = _UxGT("Hoofdmenu");
   LSTR MSG_ADVANCED_SETTINGS              = _UxGT("Geavanceerd");
