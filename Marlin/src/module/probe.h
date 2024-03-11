@@ -243,16 +243,14 @@ public:
     }
 
     static bool probe_is_below_nozzle() {
-      if(ENABLED(NOZZLE_AS_PROBE)) {
-        return true;
-      } else {
+      if(!ENABLED(NOZZLE_AS_PROBE)) {
         constexpr float offset[] = NOZZLE_TO_PROBE_OFFSET;
         for(unsigned char i = 0; i < COUNT(offset); i++) {
           if(offset[i] != 0)
             return false;
         }
-        return true;
       }
+      return true;
     }
 
     static float min_x() { return _min_x() - (probe_is_below_nozzle() && ENABLED(HAS_HOME_OFFSET) ? home_offset.x : 0.f); }
