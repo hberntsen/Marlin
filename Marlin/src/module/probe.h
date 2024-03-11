@@ -242,7 +242,7 @@ public:
       );
     }
 
-    static constexpr bool probe_is_below_nozzle() {
+    static bool probe_is_below_nozzle() {
       if(ENABLED(NOZZLE_AS_PROBE)) {
         return true;
       } else {
