@@ -171,13 +171,13 @@ namespace Language_nl {
   LSTR MSG_FILAMENTCHANGE_E               = _UxGT("Verv. Filament *");
   LSTR MSG_ATTACH_MEDIA                   = _UxGT("Init. SD kaart");
   LSTR MSG_CHANGE_MEDIA                   = _UxGT("SD kaart uitwerpen");
-  LSTR MSG_ZPROBE_OUT                     = _UxGT("Z probe uit. bed");
+  LSTR MSG_ZPROBE_OUT                     = _UxGT("Z sensor buiten bed");
   LSTR MSG_BLTOUCH_SELFTEST               = _UxGT("BLTouch Zelf-Test");
   LSTR MSG_BLTOUCH_RESET                  = _UxGT("Reset BLTouch");
-  LSTR MSG_MANUAL_DEPLOY                  = _UxGT("Bevestig Z-probe");
-  LSTR MSG_MANUAL_STOW                    = _UxGT("Verwijder Z-probe");
+  LSTR MSG_MANUAL_DEPLOY                  = _UxGT("Bevestig Z sensor");
+  LSTR MSG_MANUAL_STOW                    = _UxGT("Verwijder Z sensor");
   LSTR MSG_HOME_FIRST                     = _UxGT("%s moet in thuispos.");
-  LSTR MSG_ZPROBE_ZOFFSET                 = _UxGT("Z-probe comp.");
+  LSTR MSG_ZPROBE_ZOFFSET                 = _UxGT("Z sensor comp.");
   LSTR MSG_MOVE_NOZZLE_TO_BED             = _UxGT("Verpl. nozzle nr bed");
   LSTR MSG_BABYSTEP_X                     = _UxGT("Babystap X");
   LSTR MSG_BABYSTEP_Y                     = _UxGT("Babystap Y");
@@ -256,7 +256,7 @@ namespace Language_nl {
     LSTR MSG_FILAMENT_CHANGE_RESUME       = _UxGT(MSG_2_LINE("Wacht voor", "printing..."));
   #endif
 
-  LSTR MSG_PROBE_WIZARD                   = _UxGT("Z-probe comp. meten");
+  LSTR MSG_PROBE_WIZARD                   = _UxGT("Z sensor comp. meten");
   LSTR MSG_PROBE_WIZARD_PROBING           = _UxGT("Voorbereiden...");
 }
 
