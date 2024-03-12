@@ -15,7 +15,7 @@ zoals in de gebruiksaanwijzing
 ## 7. Afstellen
 1. Denk aan het schoonmaken van de printkop
 2. Voer in het menu [`Configuratie`](#configuratie) de [`Zet X0 Y0 Z0`](#zet-x0-y0-z0) stap uit.
-3. Meet via menu [`Configuratie`](#configuratie) de [Z-probe compensatie](#z-probe-compensatie-meten).
+3. Meet via menu [`Configuratie`](#configuratie) de [Z sensor compensatie](#z-sensor-compensatie-meten).
 4. Voer de [bednivellering](#bednivellering) uit.
 ## 8. Voorbereiding Cura
 Niet meer nodig 
@@ -141,7 +141,7 @@ Deze optie kan als volgt gebruikt worden:
 1. Zet de printer in de thuispositie, via de `Naar thuispositie` optie in het hoofdmenu.
 2. Verplaats via het menu `Beweging` -> `As verplaatsen` de X-as naar de linkerrand van de glasplaat, tot 2 cm vanaf de rand.
 3. Verplaats de Y-as naar de voorkant van de glasplaat, tot 4 cm vanaf de rand.
-4. Indien je geen Z-probe gaat gebruiken, ga nu hieronder door met de fijnafstelling van de Z-as
+4. Indien je geen Z sensor gaat gebruiken, ga nu hieronder door met de fijnafstelling van de Z-as
 5. Activeer nu de optie `Zet X0 Y0 Z0` in het `Configuratie` menu.
 6. Sla nu de instellingen op, via `Configuratie` -> `Instellingen opsl.`.
 
@@ -154,47 +154,47 @@ Deze optie kan als volgt gebruikt worden:
 5. Probeer nu dezelfde weerstand rechts te krijgen door met de hand aan de rechter spindel te draaien
 
 > [!NOTE]
-> Na het uitvoeren van Bednivellering wordt Z0 opnieuw bepaald aan de hand van de probe. Klopt de Z0 toch niet helemaal? Verander dan de `Z-probe comp.` in het `Bednivellering` menu en voer de bednivellering opnieuw uit.
+> Na het uitvoeren van Bednivellering wordt Z0 opnieuw bepaald aan de hand van de Z sensor. Klopt de Z0 toch niet helemaal? Verander dan de `Z sensor comp.` in het `Bednivellering` menu en voer de bednivellering opnieuw uit.
 
-### Z-probe compensatie meten
+### Z sensor compensatie meten
 
-De printer moet weten na hoeveeel millimeter beweging de Z-probe eindstop klikt. Deze optie helpt je de afstand van de nozzle tot het schakelmoment te meten.
+De printer moet weten na hoeveeel millimeter beweging de Z sensor eindstop klikt. Deze optie helpt je de afstand van de nozzle tot het schakelmoment te meten.
 
 Bij het selecteren van deze optie wordt de volgende procedure gevolgd:
 
 1. De printkop gaat automatisch naar de thuispositie.
 2. De printkop beweegt naar het midden
-3. De printer keert terug naar het statusscherm met de melding `Bevestig Z-probe`
-4. Bevestig de Z-probe aan de printkop
+3. De printer keert terug naar het statusscherm met de melding `Bevestig Z sensor`
+4. Bevestig de Z sensor aan de printkop
 5. Druk op de draaiknop
 6. De printer wacht nu tot het bed verwarmd is
 7. De meting wordt gedaan
-8. De printer vraagt nu om de Z-probe te verwijderen, verwijder die
+8. De printer vraagt nu om de Z sensro te verwijderen, verwijder die
 9. Druk op de knop
 10. Verplaats nu via het menu de nozzle richting het printbed, meet met een papiertje dat je een héél klein beetje weerstand voelt.
 11. Wanneer de nozzle het papietje net raakt, kies de optie `Klaar` in het menu
-12. De printer weet nu hoeveel die moet compenseren met de Z-probe. Sla via het `Configuratie` menu de instellingen op.
+12. De printer weet nu hoeveel die moet compenseren met de Z sensor. Sla via het `Configuratie` menu de instellingen op.
 
 > [!NOTE]
-> Zit de printkop te laag tijdens het printen? Dan zat je in deze stap te laag toen je `Klaar` koos in het menu. Je kan ook in het `Bednivellering` menu de `Z-probe comp.` waarde iets verhogen (en vice versa). Start een nieuwe bednivellering na het aanpassen.
+> Zit de printkop te laag tijdens het printen? Dan zat je in deze stap te laag toen je `Klaar` koos in het menu. Je kan ook in het `Bednivellering` menu de `Z sensor comp.` waarde iets verhogen (en vice versa). Start een nieuwe bednivellering na het aanpassen.
 
 ### Bednivellering
 
 ![](./menu-configuratie-bednivellering.png)
 
 > [!IMPORTANT]  
-> Voor deze optie is het belangrijk dat de Z-probe compensatie gemeten is. De meetwaarde staat in de `Z-probe comp.` in dit menu.
+> Voor deze optie is het belangrijk dat de Z sensor compensatie gemeten is. De meetwaarde staat in de `Z sensor comp.` in dit menu.
 
 > [!CAUTION]
-> Om te voorkomen dat de Z-probe smelt, zorg ervoor dat de printkop kouder dan 50 graden is voordat je de probe bevestigt.
+> Om te voorkomen dat de Z sensor smelt, zorg ervoor dat de printkop kouder dan 50 graden is voordat je de sensor bevestigt.
 
 1. Kies `Start bednivellering`
 2. De printer zal nu zonder bevesgiging in beeld naar de thuispositie gaan
-3. De printer vraagt om de Z-probe te bevestigen
+3. De printer vraagt om de Z sensor te bevestigen
 4. Druk na het bevestigen op de draaiknop
 5. Het bed wordt nu verwarmd
 6. De printer zal nu 9 punten meten
-7. De printer vraagt om de probe te verwijderen, doe dat
+7. De printer vraagt om de Z sensor te verwijderen, doe dat
 8. Sla de instellingen op
 
 > [!NOTE]  
