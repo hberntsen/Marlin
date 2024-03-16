@@ -103,7 +103,7 @@ namespace Language_nl {
   LSTR MSG_MOVE_Z                         = _UxGT("Verplaats Z");
   LSTR MSG_MOVE_N                         = _UxGT("Verplaats @");
   LSTR MSG_MOVE_E                         = _UxGT("Verplaats filament");
-  LSTR MSG_MOVE_EN                        = _UxGT("Extruder *");
+  LSTR MSG_MOVE_EN                        = _UxGT("Printkop *");
   LSTR MSG_HOTEND_TOO_COLD                = _UxGT("Hotend te koud");
   LSTR MSG_MOVE_N_MM                      = _UxGT("Verplaats $mm");
   LSTR MSG_MOVE_01MM                      = _UxGT("Verplaats 0.1mm");
@@ -131,6 +131,8 @@ namespace Language_nl {
   LSTR MSG_MAX_SPEED                      = _UxGT("Max snelheid (mm/s)");
   LSTR MSG_ACCELERATION                   = _UxGT("Acceleratie");
   LSTR MSG_TEMPERATURE                    = _UxGT("Temperatuur");
+  LSTR MSG_STEPS_COARSE                   = _UxGT("Per 25:");
+  LSTR MSG_STEPS_FINE                     = _UxGT("Fijnafstelling:");
   LSTR MSG_MOTION                         = _UxGT("Beweging");
   LSTR MSG_FILAMENT                       = _UxGT("Filament");
   LSTR MSG_ADVANCE_K                      = _UxGT("Advance K");        // accepted english dutch
@@ -193,6 +195,7 @@ namespace Language_nl {
   LSTR MSG_HALTED                         = _UxGT("PRINTER GESTOPT");
   LSTR MSG_PLEASE_RESET                   = _UxGT("Reset A.U.B.");
   LSTR MSG_PREHEATING                     = _UxGT("Voorverwarmen...");
+  LSTR MSG_EXTRUDER                       = _UxGT("Printkop");
   LSTR MSG_HEATING                        = _UxGT("Verwarmen...");
   LSTR MSG_COOLING                        = _UxGT("Afkoelen...");
   LSTR MSG_BED_HEATING                    = _UxGT("Bed verwarmen...");
