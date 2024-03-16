@@ -2005,7 +2005,7 @@
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
-  //#define PROBE_Y_FIRST
+  #define PROBE_Y_FIRST
 
   // Updates the logical Z0 to the mean measured distance.
   // Change the M851 Z to apply an offset
