@@ -602,6 +602,7 @@ namespace Language_en {
   LSTR MSG_ZPROBE_YOFFSET                 = _UxGT("Probe Y Offset");
   LSTR MSG_ZPROBE_ZOFFSET                 = _UxGT("Probe Z Offset");
   LSTR MSG_ZPROBE_MARGIN                  = _UxGT("Probe Margin");
+  LSTR MSG_ZPROBE                         = _UxGT("Z-Probe");
   LSTR MSG_Z_FEED_RATE                    = _UxGT("Z Feed Rate");
   LSTR MSG_ENABLE_HS_MODE                 = _UxGT("Enable HS mode");
   LSTR MSG_MOVE_NOZZLE_TO_BED             = _UxGT("Move Nozzle to Bed");

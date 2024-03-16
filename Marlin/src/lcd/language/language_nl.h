@@ -178,6 +178,7 @@ namespace Language_nl {
   LSTR MSG_MANUAL_STOW                    = _UxGT("Verwijder Z sensor");
   LSTR MSG_HOME_FIRST                     = _UxGT("%s moet in thuispos.");
   LSTR MSG_ZPROBE_ZOFFSET                 = _UxGT("Z sensor comp.");
+  LSTR MSG_ZPROBE                         = _UxGT("Z sensor");
   LSTR MSG_MOVE_NOZZLE_TO_BED             = _UxGT("Verpl. nozzle nr bed");
   LSTR MSG_BABYSTEP_X                     = _UxGT("Babystap X");
   LSTR MSG_BABYSTEP_Y                     = _UxGT("Babystap Y");

@@ -303,7 +303,7 @@ void _menu_view_endstops() {
     ES_ITEM(probe_switch_activated(), F(STR_PROBE_EN));
   #endif
   #if USES_Z_MIN_PROBE_PIN
-    ES_ITEM(PROBE_TRIGGERED(), F(STR_Z_PROBE));
+    ES_ITEM(PROBE_TRIGGERED(), GET_TEXT_F(MSG_ZPROBE));
   #endif
   #if HAS_FILAMENT_SENSOR
     ES_ITEM(READ(FIL_RUNOUT1_PIN) != FIL_RUNOUT1_STATE, F(STR_FILAMENT));
