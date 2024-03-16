@@ -650,6 +650,9 @@ void menu_advanced_steps_per_mm() {
   STATIC_ITEM(MSG_STEPS_COARSE, SS_INVERT);
   LOOP_NUM_AXES(a)
     EDIT_ITEM_FAST_N(float72_25, a, MSG_N_STEPS, &planner.settings.axis_steps_per_mm[a], 5, 9999, []{ planner.refresh_positioning(); });
+  #if E_STEPPERS
+    EDIT_ITEM_FAST_N(float72_25, E_AXIS, MSG_N_STEPS, &planner.settings.axis_steps_per_mm[E_AXIS], 5, 9999, []{ planner.refresh_positioning(); });
+  #endif
 
   STATIC_ITEM(MSG_STEPS_FINE, SS_INVERT);
   LOOP_NUM_AXES(a)
