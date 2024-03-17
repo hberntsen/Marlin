@@ -78,6 +78,7 @@ namespace LanguageNarrow_nl {
   LSTR MSG_PROBE_AND_LEVEL                = _UxGT("Z probe & Level");
   LSTR MSG_BED_LEVELING                   = _UxGT("Bed Leveling");
   LSTR MSG_LEVEL_BED                      = _UxGT("Level bed");
+  LSTR MSG_VIEW_ABL_REPORT                = _UxGT("Bekijk meting");
 
   LSTR MSG_MOVING                         = _UxGT("Verplaatsen...");
   LSTR MSG_FREE_XY                        = _UxGT("Vrij XY");

@@ -236,6 +236,29 @@
   void goto_tramming_wizard();
 #endif
 
+#if ENABLED(AUTO_BED_LEVELING_LINEAR) && ENABLED(ABL_LCD_REPORT)
+void menu_abl_report() {
+  START_MENU();
+  BACK_ITEM(MSG_BED_LEVELING);
+
+  for (int8_t yy = GRID_MAX_POINTS_Y - 1; yy >= 0; yy--) {
+    char msg[21];
+    for (uint8_t xx = 0; xx < GRID_MAX_POINTS_X; ++xx) {
+      size_t offset = xx * 7;
+      if(offset < sizeof msg) {
+        snprintf_P(msg + offset, sizeof msg - offset , PSTR("%s "), ftostr43sign(ablreport.diffs[xx][yy]));
+      }
+    }
+
+    STATIC_ITEM_F(F(""), SS_LEFT, msg);
+  }
+  STATIC_ITEM_F(F(" ^X0Y0    Z0: "), SS_LEFT, ftostr43sign(-home_offset.z));
+
+  END_MENU();
+}
+#endif
+
+
 // Include a sub-menu when there's manual probing
 
 void menu_probe_level() {
@@ -265,6 +288,9 @@ void menu_probe_level() {
     #endif
 
     #if HAS_LEVELING
+      #if ENABLED(AUTO_BED_LEVELING_LINEAR) && ENABLED(ABL_LCD_REPORT)
+        if (ablreport.set) SUBMENU(MSG_VIEW_ABL_REPORT, menu_abl_report);
+      #endif
 
       // Homed and leveling is valid? Then leveling can be toggled.
       if (is_homed && is_valid) {
