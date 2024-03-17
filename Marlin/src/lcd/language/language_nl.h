@@ -94,6 +94,7 @@ namespace Language_nl {
   LSTR MSG_LEVEL_BED                      = _UxGT("Start bednivellering");
   LSTR MSG_EDIT_MESH                      = _UxGT("Bewerk mesh");
   LSTR MSG_MESH_VIEW                      = _UxGT("Bekijk mesh");
+  LSTR MSG_VIEW_ABL_REPORT                = _UxGT("Bekijk meting");
   LSTR MSG_PROBING_POINT                  = _UxGT("Meten positie");
 
   LSTR MSG_MOVING                         = _UxGT("Verplaatsen...");

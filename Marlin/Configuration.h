@@ -2004,6 +2004,8 @@
   #define GRID_MAX_POINTS_X 3
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
+  #define ABL_LCD_REPORT
+
   // Probe along the Y axis, advancing X after each column
   #define PROBE_Y_FIRST
 

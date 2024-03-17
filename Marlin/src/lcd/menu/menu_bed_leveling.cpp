@@ -25,6 +25,7 @@
 //
 
 #include "../../inc/MarlinConfigPre.h"
+#include "../marlinui.h"
 
 #if ENABLED(LCD_BED_LEVELING)
 
@@ -222,6 +223,28 @@
 
 #endif // MESH_EDIT_MENU
 
+#if ENABLED(AUTO_BED_LEVELING_LINEAR) && ENABLED(ABL_LCD_REPORT)
+void menu_abl_report() {
+  START_MENU();
+  BACK_ITEM(MSG_BED_LEVELING);
+
+  for (int8_t yy = GRID_MAX_POINTS_Y - 1; yy >= 0; yy--) {
+    char msg[21];
+    for (uint8_t xx = 0; xx < GRID_MAX_POINTS_X; ++xx) {
+      size_t offset = xx * 7;
+      if(offset < sizeof msg) {
+        snprintf_P(msg + offset, sizeof msg - offset , PSTR("%s "), ftostr43sign(ablreport.diffs[xx][yy]));
+      }
+    }
+
+    STATIC_ITEM_F(F(""), SS_LEFT, msg);
+  }
+  STATIC_ITEM_F(F(" ^X0Y0    Z0: "), SS_LEFT, ftostr43sign(-home_offset.z));
+
+  END_MENU();
+}
+#endif
+
 /**
  * Step 1: Bed Level entry-point
  *
@@ -260,6 +283,10 @@ void menu_bed_leveling() {
 
   #if ENABLED(MESH_EDIT_MENU)
     if (is_valid) SUBMENU(MSG_EDIT_MESH, menu_edit_mesh);
+  #endif
+
+  #if ENABLED(AUTO_BED_LEVELING_LINEAR) && ENABLED(ABL_LCD_REPORT)
+    if (ablreport.set) SUBMENU(MSG_VIEW_ABL_REPORT, menu_abl_report);
   #endif
 
   // Homed and leveling is valid? Then leveling can be toggled.

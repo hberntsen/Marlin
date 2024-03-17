@@ -97,3 +97,15 @@ class TemporaryBedLevelingState {
   };
 
 #endif
+
+#if ENABLED(AUTO_BED_LEVELING_LINEAR)
+  class AblReport {
+    public:
+      bool set;
+      float diffs[GRID_MAX_POINTS_X][GRID_MAX_POINTS_Y];
+  };
+
+  #if ENABLED(ABL_LCD_REPORT)
+    extern AblReport ablreport;
+  #endif
+#endif

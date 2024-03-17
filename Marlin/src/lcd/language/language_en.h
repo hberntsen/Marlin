@@ -188,6 +188,7 @@ namespace Language_en {
   LSTR MSG_MESH_CENTER                    = _UxGT("Center Area");
   LSTR MSG_MESH_EDIT_Z                    = _UxGT("Z Value");
   LSTR MSG_MESH_CANCEL                    = _UxGT("Mesh cancelled");
+  LSTR MSG_VIEW_ABL_REPORT                = _UxGT("View report");
   LSTR MSG_CUSTOM_COMMANDS                = _UxGT("Custom Commands");
   LSTR MSG_M48_TEST                       = _UxGT("M48 Probe Test");
   LSTR MSG_M48_POINT                      = _UxGT("M48 Point");

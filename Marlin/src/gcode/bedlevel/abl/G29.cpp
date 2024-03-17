@@ -148,6 +148,10 @@ public:
   constexpr grid_count_t G29_State::abl_points;
 #endif
 
+#if ENABLED(ABL_LCD_REPORT) && ENABLED(AUTO_BED_LEVELING_LINEAR)
+  AblReport ablreport;
+#endif
+
 /**
  * G29: Detailed Z probe, probes the bed at 3 or more points.
  *      Will fail if the printer has not been homed with G28.
@@ -839,22 +843,42 @@ G29_TYPE GcodeSuite::G29() {
           vector_3(-plane_equation_coefficients.a, -plane_equation_coefficients.b, 1)    // We can eliminate the '-' here and up above
         );
 
+      float min_diff = 999;
+
+      auto get_topo_map = [&](const bool get_min) {
+        AblReport report;
+
+        for (int8_t yy = abl.grid_points.y - 1; yy >= 0; yy--) {
+          for (uint8_t xx = 0; xx < abl.grid_points.x; ++xx) {
+                const int ind = abl.indexIntoAB[xx][yy];
+                xyz_float_t tmp = { abl.eqnAMatrix[ind + 0 * abl.abl_points],
+                                    abl.eqnAMatrix[ind + 1 * abl.abl_points], 0 };
+                planner.bed_level_matrix.apply_rotation_xyz(tmp.x, tmp.y, tmp.z);
+                if (get_min) NOMORE(min_diff, abl.eqnBVector[ind] - tmp.z);
+                const float subval = get_min ? abl.mean : tmp.z + min_diff,
+                              diff = abl.eqnBVector[ind] - subval;
+                report.diffs[xx][yy] = diff;
+          }
+        }
+
+        report.set = true;
+        return report;
+      };
+
+      #if ! ENABLED(ABL_LCD_REPORT)
+        AblReport ablreport;
+      #endif
+
+      ablreport = get_topo_map(true);
+
       // Show the Topography map if enabled
       if (abl.topography_map) {
 
-        float min_diff = 999;
-
-        auto print_topo_map = [&](FSTR_P const title, const bool get_min) {
+        auto print_topo_map = [&](FSTR_P const title, const AblReport report) {
           SERIAL_ECHOF(title);
           for (int8_t yy = abl.grid_points.y - 1; yy >= 0; yy--) {
             for (uint8_t xx = 0; xx < abl.grid_points.x; ++xx) {
-              const int ind = abl.indexIntoAB[xx][yy];
-              xyz_float_t tmp = { abl.eqnAMatrix[ind + 0 * abl.abl_points],
-                                  abl.eqnAMatrix[ind + 1 * abl.abl_points], 0 };
-              planner.bed_level_matrix.apply_rotation_xyz(tmp.x, tmp.y, tmp.z);
-              if (get_min) NOMORE(min_diff, abl.eqnBVector[ind] - tmp.z);
-              const float subval = get_min ? abl.mean : tmp.z + min_diff,
-                            diff = abl.eqnBVector[ind] - subval;
+              const float diff = report.diffs[xx][yy];
               SERIAL_CHAR(' '); if (diff >= 0.0) SERIAL_CHAR('+');   // Include + for column alignment
               SERIAL_ECHO_F(diff, 5);
             } // xx
@@ -873,9 +897,9 @@ G29_TYPE GcodeSuite::G29() {
                            "   |    (-)    | T\n"
                            "   |           |\n"
                            "   O-- FRONT --+\n"
-                           " (0,0)\n"), true);
+                           " (0,0)\n"), ablreport);
         if (abl.verbose_level > 3)
-          print_topo_map(F("\nCorrected Bed Height vs. Bed Topology:\n"), false);
+          print_topo_map(F("\nCorrected Bed Height vs. Bed Topology:\n"), get_topo_map(false));
 
       } // abl.topography_map
 
