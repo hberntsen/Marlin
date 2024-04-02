@@ -454,8 +454,13 @@ void menu_backlash();
     START_MENU();
     BACK_ITEM(MSG_ADVANCED_SETTINGS);
 
-    LOOP_NUM_AXES(a)
-      EDIT_ITEM_FAST_N(float5, a, MSG_VMAX_N, &planner.settings.max_feedrate_mm_s[a], 1, max_fr_edit_scaled[a]);
+    LOOP_NUM_AXES(a) {
+      if(planner.settings.max_feedrate_mm_s[a] <= 100) {
+        EDIT_ITEM_FAST_N(float61, a, MSG_VMAX_N, &planner.settings.max_feedrate_mm_s[a], .1, max_fr_edit_scaled[a]);
+      } else {
+        EDIT_ITEM_FAST_N(float5, a, MSG_VMAX_N, &planner.settings.max_feedrate_mm_s[a], 1, max_fr_edit_scaled[a]);
+      }
+    }
 
     #if E_STEPPERS
       EDIT_ITEM_FAST_N(float5, E_AXIS, MSG_VMAX_N, &planner.settings.max_feedrate_mm_s[E_AXIS_N(active_extruder)], 1, max_fr_edit_scaled.e);
