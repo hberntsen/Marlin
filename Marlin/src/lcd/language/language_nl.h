@@ -172,6 +172,11 @@ namespace Language_nl {
   LSTR MSG_AUTORETRACT                    = _UxGT("Auto-Retract");
   LSTR MSG_FILAMENTCHANGE                 = _UxGT("Vervang filament");
   LSTR MSG_FILAMENTCHANGE_E               = _UxGT("Verv. Filament *");
+  LSTR MSG_FILAMENTLOAD                   = _UxGT("Laad Filament");
+  LSTR MSG_FILAMENTLOAD_E                 = _UxGT("Laad * Filament");
+  LSTR MSG_FILAMENTUNLOAD                 = _UxGT("Verwijder Filament");
+  LSTR MSG_FILAMENTUNLOAD_E               = _UxGT("Verwijder * Filament");
+  LSTR MSG_FILAMENTUNLOAD_ALL             = _UxGT("Verwijder Alles");
   LSTR MSG_ATTACH_MEDIA                   = _UxGT("Init. SD kaart");
   LSTR MSG_CHANGE_MEDIA                   = _UxGT("SD kaart uitwerpen");
   LSTR MSG_ZPROBE_OUT                     = _UxGT("Z sensor buiten bed");
@@ -235,7 +240,12 @@ namespace Language_nl {
 
   LSTR MSG_DAC_EEPROM_WRITE               = _UxGT("DAC Opslaan");
   LSTR MSG_FILAMENT_CHANGE_HEADER         = _UxGT("FILAMENT WISSELEN");
+  LSTR MSG_FILAMENT_CHANGE_HEADER_PAUSE   = _UxGT("PRINT GEPAUZEERD");
+  LSTR MSG_FILAMENT_CHANGE_HEADER_LOAD    = _UxGT("FILAMENT LADEN");
+  LSTR MSG_FILAMENT_CHANGE_HEADER_UNLOAD  = _UxGT("FILAMENT VERWIJDEREN");
+  LSTR MSG_FILAMENT_CHANGE_OPTION_PURGE   = _UxGT("Spoel meer");
   LSTR MSG_FILAMENT_CHANGE_OPTION_RESUME  = _UxGT("Hervat print");
+  LSTR MSG_FILAMENT_CHANGE_PURGE_CONTINUE = _UxGT("Spoelen of doorgaan?");
   LSTR MSG_FILAMENT_CHANGE_NOZZLE         = _UxGT(" Nozzle: "); // accepted English term
   //
   // Filament Change screens show up to 3 lines on a 4-line display
@@ -244,11 +254,12 @@ namespace Language_nl {
   #if LCD_HEIGHT >= 4
     // Up to 3 lines
     LSTR MSG_FILAMENT_CHANGE_INIT         = _UxGT(MSG_3_LINE("Wacht voor start", "filament te", "verwisselen"));
-    LSTR MSG_FILAMENT_CHANGE_UNLOAD       = _UxGT(MSG_3_LINE("Bezig met", "filament terug", "te draaien"));
+    LSTR MSG_FILAMENT_CHANGE_INSERT       = _UxGT(MSG_2_LINE("Laad filament", "en druk op knop"));
     LSTR MSG_FILAMENT_CHANGE_HEAT         = _UxGT(MSG_2_LINE("Klik knop om...", "verw. nozzle.")); //nozzle accepted English term
     LSTR MSG_FILAMENT_CHANGE_HEATING      = _UxGT(MSG_2_LINE("Nozzle verw.", "Wacht a.u.b."));
-    LSTR MSG_FILAMENT_CHANGE_INSERT       = _UxGT(MSG_3_LINE("Laad filament", "en druk knop", "om verder..."));
+    LSTR MSG_FILAMENT_CHANGE_UNLOAD       = _UxGT(MSG_2_LINE("Terugdraaien", "filament..."));
     LSTR MSG_FILAMENT_CHANGE_LOAD         = _UxGT(MSG_3_LINE("Wacht voor", "filament te", "laden"));
+    LSTR MSG_FILAMENT_CHANGE_PURGE        = _UxGT(MSG_1_LINE("Filament spoelen..."));
     LSTR MSG_FILAMENT_CHANGE_RESUME       = _UxGT(MSG_3_LINE("Wacht voor print", "om verder", "te gaan"));
   #else
     // Up to 2 lines
