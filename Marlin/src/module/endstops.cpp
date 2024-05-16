@@ -1116,6 +1116,18 @@ void Endstops::update() {
     }
   #endif
 
+  #if ENABLED(HOMING_ALLOW_MOVE_AWAY)
+    if(homing_moving_away_from != NO_AXIS_ENUM && !TEST_ENDSTOP(homing_moving_away_from)) {
+        switch (homing_moving_away_from) {
+          #define _ESCASE(A) case A##_AXIS: _ENDSTOP_HIT(A, ENDSTOP); break;
+          MAIN_AXIS_MAP(_ESCASE)
+          default: break;
+        }
+        planner.endstop_triggered(homing_moving_away_from);
+        if (DEBUGGING(LEVELING)) DEBUG_ECHOLNPGM("Moved away from axis ", homing_moving_away_from);
+    }
+  #endif
+
   // Signal, after validation, if an endstop limit is pressed or not
 
   if (stepper.axis_is_moving(X_AXIS)) {

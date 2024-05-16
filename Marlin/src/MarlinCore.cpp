@@ -166,6 +166,10 @@
   bool G38_did_trigger; // = false
 #endif
 
+#if ENABLED(HOMING_ALLOW_MOVE_AWAY)
+  AxisEnum homing_moving_away_from = NO_AXIS_ENUM;
+#endif
+
 #if ENABLED(DELTA)
   #include "module/delta.h"
 #elif ENABLED(POLARGRAPH)

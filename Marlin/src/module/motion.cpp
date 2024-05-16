@@ -2029,11 +2029,25 @@ void prepare_line_to_destination() {
     );
 
     //
-    // Fast move towards endstop until triggered
+    // If endstop already triggered and HOMING_ALLOW_MOVE_AWAY, do a fast move away.
+    // Otherwise, do a fast mowards the endstop untill triggered
     //
-    const float move_length = 1.5f * max_length(TERN(DELTA, Z_AXIS, axis)) * axis_home_dir;
+    const int home_away_dir = TERN1(HOMING_ALLOW_MOVE_AWAY, TEST(endstops.state(), axis) ? -1 : 1);
+    if (home_away_dir == -1) {
+      #if ENABLED(HOMING_ALLOW_MOVE_AWAY)
+        homing_moving_away_from = axis;
+      #endif
+    }
+
+    const float move_length = 1.5f * max_length(TERN(DELTA, Z_AXIS, axis)) * axis_home_dir * home_away_dir;
     if (DEBUGGING(LEVELING)) DEBUG_ECHOLNPGM("Home Fast: ", move_length, "mm");
     do_homing_move(axis, move_length, 0.0, !use_probe_bump);
+
+    if (home_away_dir == -1) {
+      #if ENABLED(HOMING_ALLOW_MOVE_AWAY)
+        homing_moving_away_from = NO_AXIS_ENUM;
+      #endif
+    }
 
     // If a second homing move is configured...
     if (bump) {
