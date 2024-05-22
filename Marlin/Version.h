@@ -28,7 +28,7 @@
 /**
  * Marlin release version identifier
  */
-#define SHORT_BUILD_VERSION "2.1.2.2-Metzo1.4.0"
+#define SHORT_BUILD_VERSION "2.1.2.2-Metzo2.0.0"
 
 /**
  * Verbose version identifier which should contain a reference to the location
