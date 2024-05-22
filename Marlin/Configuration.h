@@ -3426,4 +3426,4 @@
 //#define SERVO_DETACH_GCODE
 
 
-#define SCREENSHOT 1
+//#define SCREENSHOT 1
