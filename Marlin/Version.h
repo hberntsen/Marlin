@@ -28,7 +28,7 @@
 /**
  * Marlin release version identifier
  */
-#define SHORT_BUILD_VERSION "2.1.2.2-Metzo2.0.0"
+#define SHORT_BUILD_VERSION "2.1.2.4-Metzo1.0.0"
 
 /**
  * Verbose version identifier which should contain a reference to the location
@@ -41,7 +41,7 @@
  * here we define this default string as the date where the latest release
  * version was tagged.
  */
-#define STRING_DISTRIBUTION_DATE "2024-03-16"
+//#define STRING_DISTRIBUTION_DATE "2024-05-29"
 
 /**
  * Defines a generic printer name to be output to the LCD after booting Marlin.
