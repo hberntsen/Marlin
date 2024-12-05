@@ -917,7 +917,6 @@ G29_TYPE GcodeSuite::G29() {
         if (abl.verbose_level) {
           SERIAL_ECHOLNPAIR_F("New M206 Z home offset", home_offset.z, 8);
         }
-        set_axis_never_homed(Z_AXIS);
       }
       #endif
 
@@ -962,9 +961,7 @@ G29_TYPE GcodeSuite::G29() {
       // Auto Bed Leveling is complete! Enable if possible.
       if (abl.reenable) {
         planner.leveling_active = true;
-        #if ! ENABLED(ABL_UPDATE_M206_Z)
-         sync_plan_position();
-        #endif
+        sync_plan_position();
       }
 
     #elif ENABLED(AUTO_BED_LEVELING_BILINEAR)
