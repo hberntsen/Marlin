@@ -243,6 +243,7 @@ public:
     }
 
     static bool probe_is_below_nozzle() {
+#if HAS_BED_PROBE
       if(!ENABLED(NOZZLE_AS_PROBE)) {
         constexpr float offset[] = NOZZLE_TO_PROBE_OFFSET;
         for(unsigned char i = 0; i < COUNT(offset); i++) {
@@ -250,6 +251,7 @@ public:
             return false;
         }
       }
+#endif
       return true;
     }
 
