@@ -160,7 +160,7 @@ namespace Language_nl {
   LSTR MSG_USERWAIT                       = _UxGT("Wachten...");
   LSTR MSG_PRINT_ABORTED                  = _UxGT("Print afgebroken");
   LSTR MSG_NO_MOVE                        = _UxGT("Geen beweging.");
-  LSTR MSG_KILLED                         = _UxGT("Afgebroken. ");
+  LSTR MSG_KILLED                         = _UxGT("Afgebroken");
   LSTR MSG_STOPPED                        = _UxGT("Gestopt. ");
   LSTR MSG_CONTROL_RETRACT                = _UxGT("Retract mm");  // accepted English term in Dutch
   LSTR MSG_CONTROL_RETRACT_SWAP           = _UxGT("Ruil Retract mm");
