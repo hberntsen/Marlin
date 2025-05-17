@@ -28,13 +28,13 @@
 /**
  * Marlin release version identifier
  */
-//#define SHORT_BUILD_VERSION "2.1.3-beta3"
+#define SHORT_BUILD_VERSION "2.1.3-b3-Metzo"
 
 /**
  * Verbose version identifier which should contain a reference to the location
  * from where the binary was downloaded or the source code was compiled.
  */
-//#define DETAILED_BUILD_VERSION SHORT_BUILD_VERSION
+#define DETAILED_BUILD_VERSION SHORT_BUILD_VERSION " - https://github.com/hberntsen/Marlin"
 
 /**
  * The STRING_DISTRIBUTION_DATE represents when the binary file was built,
@@ -61,7 +61,7 @@
  * has a distinct Github fork— the Source Code URL should just be the main
  * Marlin repository.
  */
-//#define SOURCE_CODE_URL "github.com/MarlinFirmware/Marlin"
+#define SOURCE_CODE_URL "github.com/hberntsen/Marlin"
 
 /**
  * Default generic printer UUID.
@@ -73,6 +73,7 @@
  * documentation about a specific Marlin release.
  */
 //#define WEBSITE_URL "marlinfw.org"
+#define WEBSITE_URL "github.com/hberntsen/Marlin"
 
 /**
  * Set the vendor info the serial USB interface, if changeable.
