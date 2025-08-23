@@ -269,35 +269,15 @@ void menu_probe_level() {
                is_valid = leveling_is_valid();
   #endif
 
-  #if NONE(PROBE_MANUALLY, MESH_BED_LEVELING)
-    const bool is_trusted = all_axes_trusted();
-  #endif
-
   START_MENU();
 
   //
-  // ^ Main
+  // ^ Configuration
   //
-  BACK_ITEM(MSG_MAIN_MENU);
+  BACK_ITEM(MSG_CONFIGURATION);
 
   if (!g29_in_progress) {
-
-    // Auto Home if not using manual probing
-    #if NONE(PROBE_MANUALLY, MESH_BED_LEVELING)
-      if (!is_trusted) GCODES_ITEM(MSG_AUTO_HOME, FPSTR(G28_STR));
-    #endif
-
     #if HAS_LEVELING
-      #if ENABLED(AUTO_BED_LEVELING_LINEAR) && ENABLED(ABL_LCD_REPORT)
-        if (ablreport.set) SUBMENU(MSG_VIEW_ABL_REPORT, menu_abl_report);
-      #endif
-
-      // Homed and leveling is valid? Then leveling can be toggled.
-      if (is_homed && is_valid) {
-        bool show_state = planner.leveling_active;
-        EDIT_ITEM(bool, MSG_BED_LEVELING, &show_state, _lcd_toggle_bed_leveling);
-      }
-
       //
       // Level Bed
       //
@@ -310,9 +290,28 @@ void menu_probe_level() {
           SUBMENU(MSG_LEVEL_BED, _lcd_level_bed_continue);
         #endif
       #else
-        // Automatic leveling can just run the G-code
-        GCODES_ITEM(MSG_LEVEL_BED, is_homed ? F("G29") : F("G29N"));
+        bool show_level_bed = true;
+        // Should make a config option for this
+        #if ENABLED(PROBE_OFFSET_WIZARD)
+          // Good enough to detect it has never been set
+          // Needs some rounding of the probe.offset.z otherwise
+          show_level_bed = probe.offset.z != 0.f;
+        #endif
+        if(show_level_bed) {
+          // Automatic leveling can just run the G-code
+          GCODES_ITEM(MSG_LEVEL_BED, is_homed ? F("G29") : F("G29N"));
+        }
       #endif
+
+      #if ENABLED(AUTO_BED_LEVELING_LINEAR) && ENABLED(ABL_LCD_REPORT)
+        if (ablreport.set) SUBMENU(MSG_VIEW_ABL_REPORT, menu_abl_report);
+      #endif
+
+      // Homed and leveling is valid? Then leveling can be toggled.
+      if (is_homed && is_valid) {
+        bool show_state = planner.leveling_active;
+        EDIT_ITEM(bool, MSG_BED_LEVELING, &show_state, _lcd_toggle_bed_leveling);
+      }
 
       //
       // Edit Mesh (non-UBL)
@@ -361,7 +360,7 @@ void menu_probe_level() {
     //
     // Probe XY Offsets
     //
-    #if HAS_PROBE_XY_OFFSET
+    #if HAS_PROBE_XY_OFFSET && !ENABLED(PROBE_HIDE_XY_MENU)
       EDIT_ITEM_N(float31sign, X_AXIS, MSG_ZPROBE_OFFSET_N, &probe.offset.x, PROBE_OFFSET_XMIN, PROBE_OFFSET_XMAX);
       EDIT_ITEM_N(float31sign, Y_AXIS, MSG_ZPROBE_OFFSET_N, &probe.offset.y, PROBE_OFFSET_YMIN, PROBE_OFFSET_YMAX);
     #endif
@@ -376,7 +375,7 @@ void menu_probe_level() {
     }
     else {
       #if HAS_BED_PROBE
-        EDIT_ITEM_N(LCD_Z_OFFSET_TYPE, Z_AXIS, MSG_ZPROBE_OFFSET_N, &probe.offset.z, PROBE_OFFSET_ZMIN, PROBE_OFFSET_ZMAX);
+        EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_ZPROBE_ZOFFSET, &probe.offset.z, PROBE_OFFSET_ZMIN, PROBE_OFFSET_ZMAX);
       #endif
     }
 
@@ -385,13 +384,6 @@ void menu_probe_level() {
     //
     #if ENABLED(PROBE_OFFSET_WIZARD)
       SUBMENU(MSG_PROBE_WIZARD, goto_probe_offset_wizard);
-    #endif
-
-    //
-    // Probe Repeatability Test
-    //
-    #if ENABLED(Z_MIN_PROBE_REPEATABILITY_TEST)
-      GCODES_ITEM(MSG_M48_TEST, F("G28O\nM48 P10"));
     #endif
 
     //
@@ -420,13 +412,6 @@ void menu_probe_level() {
     //
     #if ENABLED(X_AXIS_TWIST_COMPENSATION)
       SUBMENU(MSG_XATC, xatc_wizard_continue);
-    #endif
-
-    //
-    // Store to EEPROM
-    //
-    #if ENABLED(EEPROM_SETTINGS)
-      ACTION_ITEM(MSG_STORE_EEPROM, ui.store_settings);
     #endif
 
   }

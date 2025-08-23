@@ -1766,6 +1766,9 @@
 //#define PROBE_OFFSET_ZMIN -20   // (mm)
 //#define PROBE_OFFSET_ZMAX  20   // (mm)
 
+// Hide the menu options to change the X and Y offsets
+#define PROBE_HIDE_XY_MENU
+
 // Enable the M48 repeatability test to test probe accuracy
 #define Z_MIN_PROBE_REPEATABILITY_TEST
 

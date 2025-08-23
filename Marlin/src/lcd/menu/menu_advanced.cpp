@@ -65,6 +65,10 @@
   #include "../../feature/hotend_idle.h"
 #endif
 
+#if ENABLED(Z_MIN_PROBE_REPEATABILITY_TEST)
+  #include "../../feature/bedlevel/bedlevel.h"
+#endif
+
 void menu_tmc();
 void menu_backlash();
 
@@ -854,6 +858,15 @@ void menu_advanced_settings() {
     #endif
 
   #endif // LIN_ADVANCE && !HAS_ADV_FILAMENT_MENU
+
+  //
+  // Probe Repeatability Test
+  //
+  #if ENABLED(Z_MIN_PROBE_REPEATABILITY_TEST)
+    if (!is_busy && !g29_in_progress) {
+        GCODES_ITEM(MSG_M48_TEST, F("G28O\nM48 P10"));
+    }
+  #endif
 
   // M540 S - Abort on endstop hit when SD printing
   #if ENABLED(SD_ABORT_ON_ENDSTOP_HIT)

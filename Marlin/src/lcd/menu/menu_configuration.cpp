@@ -69,6 +69,10 @@ void menu_advanced_settings();
   void menu_delta_calibrate();
 #endif
 
+#if ANY(HAS_LEVELING, HAS_BED_PROBE, ASSISTED_TRAMMING_WIZARD, LCD_BED_TRAMMING)
+  void menu_probe_level();
+#endif
+
 #if ENABLED(LCD_PROGRESS_BAR_TEST)
 
   static void screen_progress_bar_test() {
@@ -504,6 +508,10 @@ void menu_configuration() {
   #endif
 
   if (!busy) {
+    #if ANY(HAS_LEVELING, HAS_BED_PROBE, ASSISTED_TRAMMING_WIZARD, LCD_BED_TRAMMING)
+      SUBMENU(MSG_BED_LEVELING, menu_probe_level);
+    #endif
+
     #if ANY(DELTA_CALIBRATION_MENU, DELTA_AUTO_CALIBRATION)
       SUBMENU(MSG_DELTA_CALIBRATE, menu_delta_calibrate);
     #endif

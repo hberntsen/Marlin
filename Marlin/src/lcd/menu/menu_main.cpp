@@ -72,10 +72,6 @@ void menu_motion();
 void menu_temperature();
 void menu_configuration();
 
-#if ANY(HAS_LEVELING, HAS_BED_PROBE, ASSISTED_TRAMMING_WIZARD, LCD_BED_TRAMMING)
-  void menu_probe_level();
-#endif
-
 #if HAS_POWER_MONITOR
   void menu_power_monitor();
 #endif
@@ -411,10 +407,6 @@ void menu_main() {
     #endif
 
     SUBMENU(MSG_MOTION, menu_motion);
-
-    #if ANY(HAS_LEVELING, HAS_BED_PROBE, ASSISTED_TRAMMING_WIZARD, LCD_BED_TRAMMING)
-      SUBMENU(MSG_PROBE_AND_LEVEL, menu_probe_level);
-    #endif
   }
 
   #if HAS_CUTTER
