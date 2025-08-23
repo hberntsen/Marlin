@@ -56,6 +56,7 @@ namespace LanguageNarrow_nl {
   LSTR MSG_DEBUG_MENU                     = _UxGT("Debug Menu"); // accepted English terms
   LSTR MSG_PROGRESS_BAR_TEST              = _UxGT("Vooruitgang Test");
   LSTR MSG_ENDSTOP_TEST                   = _UxGT("Eindstop status");
+  LSTR MSG_Z_PROBE                        = _UxGT("Z sensor");
   LSTR MSG_HOMING                         = _UxGT("Gaat naar thuispos.");
   LSTR MSG_AUTO_HOME                      = _UxGT("Naar thuispositie");
   LSTR MSG_LEVEL_BED_HOMING               = _UxGT("Gaat naar thuispos.");
