@@ -103,7 +103,7 @@ void menu_advanced_settings();
 
 #if ENABLED(LCD_ENDSTOP_TEST)
 
-  #define __STOP_ITEM(F,S) PSTRING_ITEM_F_P(F, TEST(stops, S) ? PSTR(STR_ENDSTOP_HIT) : PSTR(STR_ENDSTOP_OPEN), SS_FULL);
+  #define __STOP_ITEM(F,S) PSTRING_ITEM_F_P(F, TEST(stops, S) ? GET_TEXT(MSG_YES) : GET_TEXT(MSG_NO), SS_FULL);
   #define _STOP_ITEM(L,S) __STOP_ITEM(F(L), S)
   #if HAS_X2_STATE || HAS_Y2_STATE || HAS_Z2_STATE
     #define _S1_EXP_  ~,
