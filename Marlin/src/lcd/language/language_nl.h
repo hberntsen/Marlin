@@ -42,6 +42,7 @@ namespace LanguageNarrow_nl {
   LSTR MSG_NO                             = _UxGT("Nee");
   LSTR MSG_BACK                           = _UxGT("Terug");
   LSTR MSG_BUTTON_INIT                    = _UxGT("Reset");
+  LSTR MSG_BUTTON_IGNORE                  = _UxGT("Negeer");
   LSTR MSG_BUTTON_CANCEL                  = _UxGT("Annuleren");
   LSTR MSG_BUTTON_PROCEED                 = _UxGT("Doorgaan");
   LSTR MSG_BUTTON_DONE                    = _UxGT("Klaar");
