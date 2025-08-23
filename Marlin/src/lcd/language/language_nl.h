@@ -139,7 +139,7 @@ namespace LanguageNarrow_nl {
   LSTR MSG_FILAMENT_DIAM                  = _UxGT("Fil. Dia.");
   LSTR MSG_FILAMENT_DIAM_E                = _UxGT("Fil. Dia. *");
   LSTR MSG_CONTRAST                       = _UxGT("LCD contrast");
-  LSTR MSG_STORE_EEPROM                   = _UxGT("Instellingen opsl.");
+  LSTR MSG_STORE_EEPROM                   = _UxGT("Instellingen opslaan");
   LSTR MSG_LOAD_EEPROM                    = _UxGT("Instellingen laden");
   LSTR MSG_RESTORE_DEFAULTS               = _UxGT("Instellingen reset");
   LSTR MSG_INIT_EEPROM                    = _UxGT("Wis inst. geheugen");
