@@ -33,10 +33,6 @@
 #include "../../MarlinCore.h"
 #include "../../module/temperature.h"
 
-#if ENABLED(LCD_ENDSTOP_TEST)
-  #include "../../module/endstops.h"
-#endif
-
 #if HAS_FILAMENT_SENSOR
   #include "../../feature/runout.h"
 #endif
@@ -64,7 +60,7 @@
   #include "../../feature/hotend_idle.h"
 #endif
 
-#if ANY(LCD_PROGRESS_BAR_TEST, LCD_ENDSTOP_TEST)
+#if ANY(LCD_PROGRESS_BAR_TEST)
   #include "../lcdprint.h"
   #define HAS_DEBUG_MENU 1
 #endif
@@ -101,53 +97,6 @@ void menu_advanced_settings();
 
 #endif // LCD_PROGRESS_BAR_TEST
 
-#if ENABLED(LCD_ENDSTOP_TEST)
-
-  #define __STOP_ITEM(F,S) PSTRING_ITEM_F_P(F, TEST(stops, S) ? GET_TEXT(MSG_YES) : GET_TEXT(MSG_NO), SS_FULL);
-  #define _STOP_ITEM(L,S) __STOP_ITEM(F(L), S)
-  #if HAS_X2_STATE || HAS_Y2_STATE || HAS_Z2_STATE
-    #define _S1_EXP_  ~,
-    #define _S1_SP_(I) THIRD(I, " ", "")
-    #define S1_SPACE(I) _S1_SP_(_CAT(_S1_EXP_,I))
-  #else
-    #define S1_SPACE(I)
-  #endif
-  #define STOP_ITEM(A,I,M,L) TERN(HAS_##A##I##_##M##_STATE, _STOP_ITEM, OMIT)(STRINGIFY(A) STRINGIFY(I) S1_SPACE(I) " " L, A##I##_##M)
-  #define STOP_MINMAX(A,I) STOP_ITEM(A,I,MIN,"Min") STOP_ITEM(A,I,MAX,"Max")
-  #define FIL_ITEM(N) PSTRING_ITEM_N_P(N-1, MSG_FILAMENT_EN, FILAMENT_IS_OUT(N) ? PSTR("out") : PSTR("PRESENT"), SS_FULL);
-
-  static void screen_endstop_test() {
-    if (ui.use_click()) {
-      ui.goto_previous_screen();
-      //endstops.enable_globally(false);
-      return;
-    }
-    TemporaryGlobalEndstopsState temp(true);
-    ui.defer_status_screen(true);
-    const Endstops::endstop_mask_t stops = endstops.state();
-
-    START_SCREEN();
-    STATIC_ITEM_F(GET_TEXT_F(MSG_ENDSTOP_TEST), SS_DEFAULT|SS_INVERT);
-
-    STOP_MINMAX(X,) STOP_MINMAX(X,2)
-    STOP_MINMAX(Y,) STOP_MINMAX(Y,2)
-    STOP_MINMAX(Z,) STOP_MINMAX(Z,2) STOP_MINMAX(Z,3) STOP_MINMAX(Z,4)
-    STOP_MINMAX(I,) STOP_MINMAX(J,) STOP_MINMAX(K,)
-    STOP_MINMAX(U,) STOP_MINMAX(V,) STOP_MINMAX(W,)
-
-    #if HAS_BED_PROBE && !HAS_DELTA_SENSORLESS_PROBING
-      __STOP_ITEM(GET_TEXT_F(MSG_Z_PROBE), Z_MIN_PROBE);
-    #endif
-    #if HAS_FILAMENT_SENSOR
-      REPEAT_1(NUM_RUNOUT_SENSORS, FIL_ITEM)
-    #endif
-
-    END_SCREEN();
-    ui.refresh(LCDVIEW_CALL_REDRAW_NEXT);
-  }
-
-#endif // LCD_ENDSTOP_TEST
-
 #if HAS_DEBUG_MENU
 
   void menu_debug() {
@@ -157,10 +106,6 @@ void menu_advanced_settings();
 
     #if ENABLED(LCD_PROGRESS_BAR_TEST)
       SUBMENU(MSG_PROGRESS_BAR_TEST, _goto_progress_bar_test);
-    #endif
-
-    #if ENABLED(LCD_ENDSTOP_TEST)
-      SUBMENU(MSG_ENDSTOP_TEST, screen_endstop_test);
     #endif
 
     END_MENU();
