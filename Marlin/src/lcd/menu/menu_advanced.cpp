@@ -305,6 +305,39 @@ void menu_backlash();
   #define SHOW_MENU_ADVANCED_TEMPERATURE 1
 #endif
 
+#if HAS_PREHEAT && DISABLED(SLIM_LCD_MENUS)
+
+  void _menu_configuration_preheat_settings() {
+    #define _MIN_ITEM(N) HEATER_##N##_MINTEMP,
+    #define _MAX_ITEM(N) thermalManager.hotend_max_target(0),
+    #define MINTARGET_ALL _MIN(REPEAT(HOTENDS, _MIN_ITEM) 999)
+    #define MAXTARGET_ALL _MAX(REPEAT(HOTENDS, _MAX_ITEM) 0)
+    const uint8_t m = MenuItemBase::itemIndex;
+    START_MENU();
+    STATIC_ITEM_F(ui.get_preheat_label(m), SS_DEFAULT|SS_INVERT);
+    BACK_ITEM(MSG_CONFIGURATION);
+    #if HAS_FAN
+      editable.uint8 = uint8_t(ui.material_preset[m].fan_speed);
+      EDIT_ITEM_N(percent, m, MSG_FAN_SPEED, &editable.uint8, 0, 255, []{ ui.material_preset[MenuItemBase::itemIndex].fan_speed = editable.uint8; });
+    #endif
+    #if HAS_TEMP_HOTEND
+      EDIT_ITEM(int3, MSG_NOZZLE, &ui.material_preset[m].hotend_temp, MINTARGET_ALL, MAXTARGET_ALL);
+    #endif
+    #if HAS_HEATED_BED
+      EDIT_ITEM(int3, MSG_BED, &ui.material_preset[m].bed_temp, BED_MINTEMP, BED_MAX_TARGET);
+    #endif
+    #if HAS_HEATED_CHAMBER
+      EDIT_ITEM(int3, MSG_CHAMBER, &ui.material_preset[m].chamber_temp, CHAMBER_MINTEMP, CHAMBER_MAX_TARGET);
+    #endif
+    #if ENABLED(EEPROM_SETTINGS)
+      ACTION_ITEM(MSG_STORE_EEPROM, ui.store_settings);
+    #endif
+    END_MENU();
+  }
+
+#endif // HAS_PREHEAT && !SLIM_LCD_MENUS
+
+
 //
 // Advanced Settings > Temperature
 //
@@ -782,6 +815,12 @@ void menu_advanced_settings() {
 
   #if HAS_TRINAMIC_CONFIG
     SUBMENU(MSG_TMC_DRIVERS, menu_tmc);
+  #endif
+
+  // Preheat configurations
+  #if HAS_PREHEAT && DISABLED(SLIM_LCD_MENUS)
+    for (uint8_t m = 0; m < PREHEAT_COUNT; ++m)
+      SUBMENU_N_f(m, ui.get_preheat_label(m), MSG_PREHEAT_M_SETTINGS, _menu_configuration_preheat_settings);
   #endif
 
   #if SHOW_MENU_ADVANCED_TEMPERATURE
