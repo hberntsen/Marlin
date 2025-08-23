@@ -61,6 +61,10 @@
   #include "../../feature/password/password.h"
 #endif
 
+#if ENABLED(HOTEND_IDLE_TIMEOUT)
+  #include "../../feature/hotend_idle.h"
+#endif
+
 void menu_tmc();
 void menu_backlash();
 
@@ -459,6 +463,26 @@ void menu_backlash();
 
 #endif // SHOW_MENU_ADVANCED_TEMPERATURE
 
+#if ENABLED(HOTEND_IDLE_TIMEOUT)
+
+  void menu_hotend_idle() {
+    hotend_idle_settings_t &c = hotend_idle.cfg;
+    START_MENU();
+    BACK_ITEM(MSG_BACK);
+
+    if (c.timeout) GCODES_ITEM(MSG_HOTEND_IDLE_DISABLE, F("M87"));
+    EDIT_ITEM(int3, MSG_TIMEOUT, &c.timeout, 0, 999);
+    EDIT_ITEM(int3, MSG_TEMPERATURE, &c.trigger, 0, thermalManager.hotend_max_target(0));
+    EDIT_ITEM(int3, MSG_HOTEND_IDLE_NOZZLE_TARGET, &c.nozzle_target, 0, thermalManager.hotend_max_target(0));
+    #if HAS_HEATED_BED
+      EDIT_ITEM(int3, MSG_HOTEND_IDLE_BED_TARGET, &c.bed_target, 0, BED_MAX_TARGET);
+    #endif
+
+    END_MENU();
+  }
+
+#endif
+
 #if DISABLED(SLIM_LCD_MENUS)
 
   // M203 / M205 Velocity options
@@ -762,6 +786,10 @@ void menu_advanced_settings() {
 
   #if SHOW_MENU_ADVANCED_TEMPERATURE
     SUBMENU(MSG_TEMPERATURE, menu_advanced_temperature);
+  #endif
+
+  #if ENABLED(HOTEND_IDLE_TIMEOUT)
+    SUBMENU(MSG_HOTEND_IDLE_TIMEOUT, menu_hotend_idle);
   #endif
 
   #if HAS_ADV_FILAMENT_MENU
