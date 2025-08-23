@@ -149,7 +149,7 @@ namespace LanguageNarrow_nl {
   LSTR MSG_PAUSE_PRINT                    = _UxGT("Print pauzeren");
   LSTR MSG_RESUME_PRINT                   = _UxGT("Print hervatten");
   LSTR MSG_STOP_PRINT                     = _UxGT("Print stoppen");
-  LSTR MSG_MEDIA_MENU                     = _UxGT("Print van SD kaart");
+  LSTR MSG_MEDIA_MENU_SD                  = _UxGT("Print van SD kaart");
   LSTR MSG_NO_MEDIA                       = _UxGT("Geen SD kaart");
   LSTR MSG_DWELL                          = _UxGT("Slapen...");
   LSTR MSG_USERWAIT                       = _UxGT("Wachten...");
