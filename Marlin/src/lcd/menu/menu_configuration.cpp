@@ -494,8 +494,10 @@ void menu_configuration() {
   #if DISABLED(SLIM_LCD_MENUS)
 
     #if HAS_HOME_OFFSET
-      // M428 - Set Home Offsets
-      ACTION_ITEM(MSG_SET_HOME_OFFSETS, []{ queue.inject(F("M428")); ui.return_to_status(); });
+      if(!busy) {
+        // M428 - Set Home Offsets
+        ACTION_ITEM(MSG_SET_HOME_OFFSETS, []{ queue.inject(F("M428")); ui.return_to_status(); });
+      }
     #endif
 
   #endif // !SLIM_LCD_MENUS
