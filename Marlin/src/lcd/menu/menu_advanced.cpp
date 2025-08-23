@@ -749,9 +749,7 @@ void menu_backlash();
 #endif // EDITABLE_STEPS_PER_UNIT
 
 void menu_advanced_settings() {
-  #if ANY(POLARGRAPH, SHAPING_MENU, HAS_BED_PROBE, EDITABLE_STEPS_PER_UNIT)
-    const bool is_busy = printer_busy();
-  #endif
+  const bool is_busy = printer_busy();
 
   #if ENABLED(SD_FIRMWARE_UPDATE)
     bool sd_update_state = settings.sd_update_status();
@@ -889,6 +887,12 @@ void menu_advanced_settings() {
   #if ENABLED(PASSWORD_FEATURE)
     SUBMENU(MSG_PASSWORD_SETTINGS, password.access_menu_password);
   #endif
+
+  #if ENABLED(EEPROM_SETTINGS)
+    if (!is_busy) ACTION_ITEM(MSG_LOAD_EEPROM, ui.load_settings);
+  #endif
+
+  if (!is_busy) ACTION_ITEM(MSG_RESTORE_DEFAULTS, ui.reset_settings);
 
   #if ENABLED(EEPROM_SETTINGS) && DISABLED(SLIM_LCD_MENUS)
     CONFIRM_ITEM(MSG_INIT_EEPROM,
