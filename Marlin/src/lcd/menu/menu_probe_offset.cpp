@@ -113,7 +113,7 @@ void prepare_for_probe_offset_wizard() {
       #define PROBE_OFFSET_WIZARD_XY_POS XY_CENTER
     #endif
     // Get X and Y from configuration, or use center
-    constexpr xy_pos_t wizard_pos = PROBE_OFFSET_WIZARD_XY_POS;
+    xy_pos_t wizard_pos = PROBE_OFFSET_WIZARD_XY_POS;
 
     // Probe for Z reference
     ui.wait_for_move = true;
