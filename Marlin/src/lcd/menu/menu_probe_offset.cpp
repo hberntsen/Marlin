@@ -74,7 +74,13 @@ void probe_offset_wizard_menu() {
 
   ACTION_ITEM(MSG_BUTTON_DONE, []{
     set_offset_and_go_back(calculated_z_offset);
-    current_position.z = z_offset_ref;  // Set Z to z_offset_ref, as we can expect it is at probe height
+    current_position.z = 0;  // In this wizard we removed our probe and moved
+                             // the nozzle all the way down to the bed by
+                             // lowering it until we feel resistance on a
+                             // paper between the nozzle and the bed. Thus we
+                             // are at what we want to be 0.
+    // Just to be sure
+    set_axis_never_homed(Z_AXIS);
     sync_plan_position();
     do_z_post_clearance();
   });
