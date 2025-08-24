@@ -1802,6 +1802,8 @@
   #define PROBING_BED_TEMP     40
 #endif
 
+#define PROBING_NOZZLE_TEMP_MAX 50   // (°C) Only applies to E0 at this time
+
 // @section stepper drivers
 
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
