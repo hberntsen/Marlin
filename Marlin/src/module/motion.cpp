@@ -2835,7 +2835,7 @@ void set_axis_is_at_home(const AxisEnum axis) {
   #elif ENABLED(DELTA)
     current_position[axis] = (axis == Z_AXIS) ? DIFF_TERN(HAS_BED_PROBE, delta_height, probe.offset.z) : base_home_pos(axis);
   #else
-    current_position[axis] = SUM_TERN(HAS_HOME_OFFSET, base_home_pos(axis), home_offset[axis]);
+    current_position[axis] = base_home_pos(axis);
   #endif
 
   /**
@@ -2861,7 +2861,7 @@ void set_axis_is_at_home(const AxisEnum axis) {
 
   TERN_(BABYSTEP_DISPLAY_TOTAL, babystep.reset_total(axis));
 
-  TERN_(HAS_WORKSPACE_OFFSET, workspace_offset[axis] = 0);
+  TERN_(HAS_WORKSPACE_OFFSET, workspace_offset[axis] = home_offset[axis]);
 
   if (DEBUGGING(LEVELING)) {
     #if HAS_HOME_OFFSET
@@ -2877,6 +2877,6 @@ void set_axis_is_at_home(const AxisEnum axis) {
    * Set the home offset for an axis.
    */
   void set_home_offset(const AxisEnum axis, const_float_t v) {
-    home_offset[axis] = v;
+    home_offset[axis] = workspace_offset[axis] = v;
   }
 #endif
