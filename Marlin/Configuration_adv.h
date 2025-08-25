@@ -3012,6 +3012,12 @@
   #define FILAMENT_LOAD_UNLOAD_GCODES           // Add M701/M702 Load/Unload G-codes, plus Load/Unload in the LCD Prepare menu.
   //#define FILAMENT_UNLOAD_ALL_EXTRUDERS         // Allow M702 to unload all extruders above a minimum target temp (as set by M302)
   #define CONFIGURE_FILAMENT_CHANGE               // Add M603 G-code and menu items. Requires ~1.3K bytes of flash.
+
+  // Custom option for our manually loaded printer, skips the menu with only
+  // the purge more and resume option. We don't need it since there already is
+  // a press the button when you loaded the filament screen before it, which
+  // is enough as a signal to resume the print
+  #define SKIP_FILAMENT_LOAD_PAUSE_MENU
 #endif
 
 // @section tmc_smart
