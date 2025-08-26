@@ -293,6 +293,17 @@ void _lcd_pause_message(FSTR_P const fmsg) {
   END_SCREEN();
 }
 
+#if ENABLED(FILAMENT_CHANGE_IS_PAUSE_MENU)
+void lcd_pause_parking_message()  { _lcd_pause_message(GET_TEXT_F(MSG_PAUSE_PRINT_PARKING));     }
+void lcd_pause_changing_message() { _lcd_pause_message(GET_TEXT_F(MSG_PAUSE_PRINT_PARKING));     }
+void lcd_pause_unload_message()   { }
+void lcd_pause_heating_message()  { _lcd_pause_message(GET_TEXT_F(MSG_FILAMENT_CHANGE_HEATING)); }
+void lcd_pause_heat_message()     { _lcd_pause_message(GET_TEXT_F(MSG_FILAMENT_CHANGE_HEAT));    }
+void lcd_pause_insert_message()   { _lcd_pause_message(GET_TEXT_F(MSG_ADVANCED_PAUSE_WAITING));  }
+void lcd_pause_load_message()     {   }
+void lcd_pause_waiting_message()  { _lcd_pause_message(GET_TEXT_F(MSG_ADVANCED_PAUSE_WAITING));  }
+void lcd_pause_resume_message()   { _lcd_pause_message(GET_TEXT_F(MSG_FILAMENT_CHANGE_RESUME));  }
+#else
 void lcd_pause_parking_message()  { _lcd_pause_message(GET_TEXT_F(MSG_PAUSE_PRINT_PARKING));     }
 void lcd_pause_changing_message() { _lcd_pause_message(GET_TEXT_F(MSG_FILAMENT_CHANGE_INIT));    }
 void lcd_pause_unload_message()   { _lcd_pause_message(GET_TEXT_F(MSG_FILAMENT_CHANGE_UNLOAD));  }
@@ -302,6 +313,7 @@ void lcd_pause_insert_message()   { _lcd_pause_message(GET_TEXT_F(MSG_FILAMENT_C
 void lcd_pause_load_message()     { _lcd_pause_message(GET_TEXT_F(MSG_FILAMENT_CHANGE_LOAD));    }
 void lcd_pause_waiting_message()  { _lcd_pause_message(GET_TEXT_F(MSG_ADVANCED_PAUSE_WAITING));  }
 void lcd_pause_resume_message()   { _lcd_pause_message(GET_TEXT_F(MSG_FILAMENT_CHANGE_RESUME));  }
+#endif
 
 void lcd_pause_purge_message() {
   _lcd_pause_message(GET_TEXT_F(

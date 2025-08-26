@@ -1817,6 +1817,10 @@ uint8_t expand_u8str_P(char * const outstr, PGM_P const ptpl, const int8_t ind, 
    *   - For a host-only printer tell the host to pause the print in progress.
    */
   void MarlinUI::pause_print() {
+    #if ENABLED(FILAMENT_CHANGE_IS_PAUSE_MENU)
+      queue.inject(F("M600 B0"));
+      return;
+    #endif
     #if HAS_MARLINUI_MENU
       synchronize(GET_TEXT_F(MSG_PAUSING));
       defer_status_screen();
