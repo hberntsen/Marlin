@@ -266,6 +266,7 @@ void menu_probe_level() {
 
   #if HAS_LEVELING
     const bool is_homed = all_axes_homed(),
+               is_trusted = all_axes_trusted(),
                is_valid = leveling_is_valid();
   #endif
 
@@ -299,7 +300,7 @@ void menu_probe_level() {
         #endif
         if(show_level_bed) {
           // Automatic leveling can just run the G-code
-          GCODES_ITEM(MSG_LEVEL_BED, is_homed ? F("G29") : F("G29N"));
+          GCODES_ITEM(MSG_LEVEL_BED, is_trusted ? F("G29") : F("G29N"));
         }
       #endif
 
