@@ -1300,7 +1300,7 @@
  * Override with M92 (when enabled below)
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 3200, 96 }  // Frits Sijbel, Gerrie
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 1600, 96 }  // Frits Sijbel, Gerrie
 
 /**
  * Enable support for M92. Disable to save at least ~530 bytes of flash.
@@ -1313,7 +1313,7 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // Z=3 if 3200 steps per unit, else 5
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 3, 25 }  // Frits Sijbel, Gerrie
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }  // Frits Sijbel, Gerrie
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
