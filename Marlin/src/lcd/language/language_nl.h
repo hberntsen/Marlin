@@ -250,7 +250,7 @@ namespace LanguageNarrow_nl {
   //
   // Filament Change screens show up to 2 lines on a 3-line display
   //
-  LSTR MSG_ADVANCED_PAUSE_WAITING         = _UxGT(MSG_1_LINE("Klik om door te gaan"));
+  LSTR MSG_ADVANCED_PAUSE_WAITING         = _UxGT(MSG_2_LINE("Druk op knop om", "door te gaan"));
   LSTR MSG_PAUSE_PRINT_PARKING            = _UxGT(MSG_1_LINE("Parkeren..."));
   LSTR MSG_FILAMENT_CHANGE_INIT           = _UxGT(MSG_2_LINE("Wacht voor", "start..."));
   LSTR MSG_FILAMENT_CHANGE_UNLOAD         = _UxGT(MSG_2_LINE("Terugdraaien", "filament..."));
@@ -279,7 +279,7 @@ namespace LanguageTall_nl {
     // Filament Change screens show up to 3 lines on a 4-line display
     LSTR MSG_FILAMENT_CHANGE_INIT         = _UxGT(MSG_3_LINE("Wacht voor start", "filament te", "verwisselen"));
     LSTR MSG_FILAMENT_CHANGE_UNLOAD       = _UxGT(MSG_3_LINE("Wacht voor", "filament uit", "te laden"));
-    LSTR MSG_FILAMENT_CHANGE_HEAT         = _UxGT(MSG_2_LINE("Klik knop om", "nozzle te verwarmen")); //nozzle accepted English term
+    LSTR MSG_FILAMENT_CHANGE_HEAT         = _UxGT(MSG_2_LINE("Druk op knop om", "nozzle te verwarmen")); //nozzle accepted English term
     LSTR MSG_FILAMENT_CHANGE_HEATING      = _UxGT(MSG_2_LINE("Nozzle verwarmen", "Wacht a.u.b."));
     LSTR MSG_FILAMENT_CHANGE_INSERT       = _UxGT(MSG_3_LINE("Laad filament", "en druk knop", "om verder..."));
     LSTR MSG_FILAMENT_CHANGE_LOAD         = _UxGT(MSG_3_LINE("Wacht voor", "filament te", "laden"));
