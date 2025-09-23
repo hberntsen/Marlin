@@ -83,6 +83,7 @@ void probe_offset_wizard_menu() {
     set_axis_never_homed(Z_AXIS);
     sync_plan_position();
     do_z_post_clearance();
+    LCD_MESSAGE(MSG_BUTTON_DONE);
   });
 
   ACTION_ITEM(MSG_BUTTON_CANCEL, []{
