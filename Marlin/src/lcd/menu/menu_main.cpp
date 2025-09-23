@@ -39,7 +39,7 @@
   #include "../../feature/power.h"
 #endif
 
-#if HAS_GAMES && DISABLED(LCD_INFO_MENU)
+#if HAS_GAMES
   #include "game/game.h"
 #endif
 
@@ -535,7 +535,8 @@ void menu_main() {
 
     SUBMENU(MSG_INFO_MENU, menu_info);
 
-  #elif HAS_GAMES
+  #endif
+  #if HAS_GAMES
 
     #if ENABLED(GAMES_EASTER_EGG)
       SKIP_ITEM();

@@ -34,10 +34,6 @@
   #include "../../MarlinCore.h"
 #endif
 
-#if HAS_GAMES
-  #include "game/game.h"
-#endif
-
 #define VALUE_ITEM(MSG, VALUE, STYL)    do{ char msg[21]; strcpy_P(msg, PSTR(": ")); strcpy(msg + 2, VALUE); STATIC_ITEM(MSG, STYL, msg); }while(0)
 #define VALUE_ITEM_F(MSG, PVALUE, STYL) do{ char msg[21]; strcpy_P(msg, PSTR(": ")); strcpy_P(msg + 2, PSTR(PVALUE)); STATIC_ITEM(MSG, STYL, msg); }while(0)
 
@@ -301,29 +297,6 @@ void menu_info() {
 
   #if ENABLED(PRINTCOUNTER)
     SUBMENU(MSG_INFO_STATS_MENU, menu_info_stats);               // Printer Stats >
-  #endif
-
-  #if HAS_GAMES
-  {
-    #if ENABLED(GAMES_EASTER_EGG)
-      SKIP_ITEM(); SKIP_ITEM(); SKIP_ITEM();
-    #endif
-
-    // Game sub-menu or the individual game
-    SUBMENU(
-      #if HAS_GAME_MENU
-        MSG_GAMES, menu_game
-      #elif ENABLED(MARLIN_BRICKOUT)
-        MSG_BRICKOUT, brickout.enter_game
-      #elif ENABLED(MARLIN_INVADERS)
-        MSG_INVADERS, invaders.enter_game
-      #elif ENABLED(MARLIN_SNAKE)
-        MSG_SNAKE, snake.enter_game
-      #elif ENABLED(MARLIN_MAZE)
-        MSG_MAZE, maze.enter_game
-      #endif
-    );
-  }
   #endif
 
   #if ENABLED(BUILD_INFO_MENU_ITEM)
