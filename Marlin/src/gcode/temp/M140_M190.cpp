@@ -98,13 +98,13 @@ void GcodeSuite::M140_M190(const bool isM190) {
     constexpr bool anneal = false;
   #endif
 
+  // With PRINTJOB_TIMER_AUTOSTART, M190 can start the timer, and M140 can stop it
+  TERN_(PRINTJOB_TIMER_AUTOSTART, thermalManager.auto_job_check_timer(isM190, !isM190));
+
   if (!anneal) {
     thermalManager.setTargetBed(temp);
     thermalManager.isHeatingBed() ? LCD_MESSAGE(MSG_BED_HEATING) : LCD_MESSAGE(MSG_BED_COOLING);
   }
-
-  // With PRINTJOB_TIMER_AUTOSTART, M190 can start the timer, and M140 can stop it
-  TERN_(PRINTJOB_TIMER_AUTOSTART, thermalManager.auto_job_check_timer(isM190, !isM190));
 
   if (isM190) {
     #if ENABLED(BED_ANNEALING_GCODE)
