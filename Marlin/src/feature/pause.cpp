@@ -689,10 +689,10 @@ void resume_print(
     thermalManager.wait_for_hotend(active_extruder, false);
   }
 
-  ui.pause_show_message(PAUSE_MESSAGE_RESUME);
-
   // Check Temperature before moving hotend
   ensure_safe_temperature(DISABLED(BELTPRINTER));
+
+  ui.pause_show_message(PAUSE_MESSAGE_RESUME);
 
   // Retract to prevent oozing
   unscaled_e_move(-(PAUSE_PARK_RETRACT_LENGTH), feedRate_t(PAUSE_PARK_RETRACT_FEEDRATE));
