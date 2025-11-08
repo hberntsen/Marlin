@@ -772,7 +772,9 @@ G29_TYPE GcodeSuite::G29() {
 
           #else // !BD_SENSOR_PROBE_NO_STOP
 
-            abl.measured_z = faux ? 0.001f * random(-100, 101) : probe.probe_at_point(abl.probePos, raise_after, abl.verbose_level);
+            abl.measured_z = faux ?
+              0.001f * random(-100, 101) :
+              probe.probe_at_point(abl.probePos, raise_after, abl.verbose_level, true, Z_PROBE_DEFAULT_SANITY_CHECK, Z_PROBE_LOW_POINT, Z_TWEEN_SAFE_CLEARANCE, ENABLED(Z_CLEARANCE_BETWEEN_PROBES_RELATIVE));
 
           #endif
 
